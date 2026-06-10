@@ -1,0 +1,164 @@
+/* =========================================================================
+   Jeongwon Kim Portfolio — Design Tokens
+   Theme: Trusted Professional & Global Agility (Trust Blue)
+   ========================================================================= */
+
+/* ---------- Font: Pretendard (via CDN) ----------
+   Pretendard is a Korean/Latin variable font. Bundled webfont via jsDelivr.
+   Fallbacks cover both Korean (Apple SD Gothic Neo, Malgun Gothic) and Latin.
+*/
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+:root {
+  /* ---------- Colors: Core Brand (Trust Blue) ---------- */
+  --color-primary:        #1C99ED;
+  --color-primary-light:  #E0F2FE;
+  --color-primary-dark:   #0284C7;
+  --color-primary-bright: #0EA5E9;
+
+  /* ---------- Colors: Neutral ---------- */
+  --color-text-main:   #1A1A1A;
+  --color-text-sub:    #4D4D4F;
+  --color-bg-white:    #FFFFFF;
+  --color-bg-gray:     #F8FAFC;
+  --color-border:      #E2E8F0;
+  --color-border-soft: #EEF2F7;
+
+  /* ---------- Semantic aliases (for skill consumers) ---------- */
+  --fg-1: var(--color-text-main);
+  --fg-2: var(--color-text-sub);
+  --bg-1: var(--color-bg-white);
+  --bg-2: var(--color-bg-gray);
+  --accent: var(--color-primary);
+  --accent-soft: var(--color-primary-light);
+  --accent-strong: var(--color-primary-dark);
+  --border: var(--color-border);
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bd: rgba(15, 23, 42, 0.06);
+  --grid-color: color-mix(in srgb, var(--color-primary) 6%, transparent);
+  --surface-hover-border: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  --selection-bg: color-mix(in srgb, var(--color-primary) 25%, transparent);
+  --hero-spotlight: color-mix(in srgb, var(--color-primary) 18%, transparent);
+
+  /* ---------- Typography ---------- */
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+               "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Type scale (px → rem-equivalent kept literal for portfolio fidelity) */
+  --fs-h1: 48px;  --fw-h1: 800;  --lh-h1: 1.2;   /* Headline 1 */
+  --fs-h2: 32px;  --fw-h2: 700;  --lh-h2: 1.3;   /* Headline 2 */
+  --fs-t1: 24px;  --fw-t1: 700;  --lh-t1: 1.4;   /* Title 1 */
+  --fs-st: 18px;  --fw-st: 600;  --lh-st: 1.5;   /* Subtitle 1 */
+  --fs-b1: 16px;  --fw-b1: 400;  --lh-b1: 1.6;   /* Body 1 */
+  --fs-b2: 14px;  --fw-b2: 400;  --lh-b2: 1.6;   /* Body 2 */
+  --fs-cap: 12px; --fw-cap: 500; --lh-cap: 1.4;  /* Caption / Data */
+
+  /* ---------- Spacing ---------- */
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 4px;   /* badges, chips */
+  --radius-md: 8px;   /* cards, buttons */
+  --radius-lg: 12px;  /* hero containers */
+  --radius-pill: 999px;
+
+  /* ---------- Elevation ---------- */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+
+  /* ---------- Motion ---------- */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+}
+
+/* ---------- Base ---------- */
+html, body {
+  font-family: var(--font-sans);
+  color: var(--color-text-main);
+  background: var(--color-bg-white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Semantic type classes ---------- */
+.h1, h1.t { font-size: var(--fs-h1); font-weight: var(--fw-h1); line-height: var(--lh-h1); letter-spacing: -0.02em; }
+.h2, h2.t { font-size: var(--fs-h2); font-weight: var(--fw-h2); line-height: var(--lh-h2); letter-spacing: -0.015em; }
+.t1, h3.t { font-size: var(--fs-t1); font-weight: var(--fw-t1); line-height: var(--lh-t1); letter-spacing: -0.01em; }
+.st       { font-size: var(--fs-st); font-weight: var(--fw-st); line-height: var(--lh-st); }
+.b1, p.t  { font-size: var(--fs-b1); font-weight: var(--fw-b1); line-height: var(--lh-b1); }
+.b2       { font-size: var(--fs-b2); font-weight: var(--fw-b2); line-height: var(--lh-b2); color: var(--color-text-sub); }
+.cap      { font-size: var(--fs-cap); font-weight: var(--fw-cap); line-height: var(--lh-cap); color: var(--color-text-sub); letter-spacing: 0.02em; }
+
+.data-highlight { color: var(--color-primary); font-weight: 800; }
+
+/* ---------- Components: Keyword Badge ---------- */
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: var(--fs-cap);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Components: Project Card ---------- */
+.project-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  transition: box-shadow var(--dur-base) var(--ease-standard),
+              border-color var(--dur-base) var(--ease-standard);
+}
+.project-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #CBD5E1;
+}
+
+/* ---------- Components: Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--space-2);
+  height: 40px; padding: 0 16px;
+  border-radius: var(--radius-md);
+  font-size: var(--fs-b2); font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-standard),
+              color var(--dur-fast) var(--ease-standard),
+              border-color var(--dur-fast) var(--ease-standard);
+}
+.btn-primary { background: var(--color-primary); color: #fff; }
+.btn-primary:hover { background: var(--color-primary-dark); }
+.btn-secondary { background: var(--color-bg-white); color: var(--color-text-main); border-color: var(--color-border); }
+.btn-secondary:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.btn-ghost { background: transparent; color: var(--color-text-sub); }
+.btn-ghost:hover { color: var(--color-primary); }
+
+/* ---------- Components: Icon Button ---------- */
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-sub);
+  transition: background var(--dur-fast) var(--ease-standard),
+              border-color var(--dur-fast) var(--ease-standard),
+              color var(--dur-fast) var(--ease-standard);
+}
+.icon-btn:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
