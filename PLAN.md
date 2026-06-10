@@ -10,7 +10,7 @@
 
 ## Done
 
-- [Done] GitHub/Vercel 배포 완료 — Git 초기화 및 `origin` 연결, `main` 푸시, `index.html` 루트 진입 추가, Vercel SSO 보호 해제 후 Git 메타데이터 없는 임시 배포로 공개 URL 검증 완료 (2026-06-10)
+- [Done] GitHub/Vercel 배포 완료 — Git 초기화 및 `origin` 연결, `main` 푸시, `index.html` 루트 진입 추가, Vercel SSO 보호 해제 후 Git 메타데이터 없는 임시 배포와 기본 alias 연결까지 완료 (2026-06-10)
 - [Done] Track 3 기술 부채 정리 — `.drift` 미사용 CSS 제거, Tailwind 색상/그림자 토큰을 `tokens.css` 기반으로 통합, Experience 오버레이 토큰 정리, 브라우저 검증은 사용자 요청으로 생략 (2026-06-10)
 - [Done] Experience 카드 배경 사진 적용 — `sections/experience.jsx`에 4개 에셋 자동 매핑, 반투명 오버레이로 텍스트 가독성 유지, 브라우저 검증 완료 (2026-06-10)
 - [Done] Experience 가독성 보정 — 배경 이미지 opacity 추가 하향, 오버레이 강화, 텍스트 그림자 추가 (2026-06-10)

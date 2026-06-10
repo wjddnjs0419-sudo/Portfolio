@@ -12,6 +12,7 @@
 배포 측면에서는 루트 경로 공개를 위해 `index.html` 진입점을 추가했고,
 Vercel 기본 `vercel.app` 도메인에 걸려 있던 SSO 보호를 해제한 뒤
 Git 작성자 팀 접근 제한으로 `BLOCKED` 되던 배포를 Git 메타데이터 없는 임시 폴더 배포로 우회해 공개 배포를 완료했습니다.
+마지막으로 기본 프로젝트 alias를 `https://portfolio-jeongwon-kim-s-projects.vercel.app`로 연결해 공유용 주소를 정리했습니다.
 
 ### 주요 작업
 
@@ -22,6 +23,7 @@ Git 작성자 팀 접근 제한으로 `BLOCKED` 되던 배포를 Git 메타데�
 | Vercel 설정 정리 | `vercel.json` 삭제 | 라우팅 우회 대신 정적 기본 엔트리(`index.html`)로 단순화 |
 | Vercel 접근 정책 수정 | Vercel 프로젝트 설정 | `ssoProtection` 비활성화로 기본 `vercel.app` 도메인 공개 접근 허용 |
 | 배포 우회 처리 | 임시 배포 디렉터리(`/tmp/portfolio-vercel-deploy`) | Git 작성자 메타데이터로 인해 `readyState=BLOCKED` 되던 문제를 Git 메타데이터 없는 임시 디렉터리 배포로 해결 |
+| 공개 alias 정리 | Vercel alias | 읽기 쉬운 공유 주소 `portfolio-jeongwon-kim-s-projects.vercel.app`를 최신 프로덕션 배포에 연결 |
 | 계획/핸드오프 정리 | `PLAN.md`, `RESULT.md` | 배포 결과와 검증 내역 최신화 |
 
 ### 검증
@@ -30,7 +32,7 @@ Git 작성자 팀 접근 제한으로 `BLOCKED` 되던 배포를 Git 메타데�
 - [x] `npx vercel project protection portfolio --format json`으로 `ssoProtection: null` 확인
 - [x] `npx vercel api /v13/deployments/dpl_78oZ3szk3oFVzqGt1nzkAcm6ja9Q`로 `readyStateReason`이 Git 작성자 팀 접근 제한임을 확인
 - [x] Git 메타데이터 없는 임시 폴더 배포 후 `readyState: READY` 확인
-- [x] `curl -I -L https://portfolio-theta-wine-zwpo81oq1i.vercel.app`로 루트 `/`의 `200 OK` 확인
+- [x] `curl -I -L https://portfolio-jeongwon-kim-s-projects.vercel.app`로 루트 `/`의 `200 OK` 확인
 - [x] `curl -I -L https://portfolio-theta-wine-zwpo81oq1i.vercel.app/Portfolio.html`로 기존 엔트리도 `200 OK` 확인
 
 ### 잔여 과제
