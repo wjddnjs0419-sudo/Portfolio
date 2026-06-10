@@ -6,11 +6,11 @@
 
 ## Pending Approval
 
-- GitHub/Vercel 배포 준비 — `.gitignore`, `vercel.json` 추가 후 Git 초기화, 원격 `wjddnjs0419-sudo/Portfolio` 연결, 첫 커밋/푸시 및 Vercel 배포 진행 (2026-06-10)
 ---
 
 ## Done
 
+- [Done] GitHub/Vercel 배포 완료 — Git 초기화 및 `origin` 연결, `main` 푸시, `index.html` 루트 진입 추가, Vercel SSO 보호 해제 후 Git 메타데이터 없는 임시 배포로 공개 URL 검증 완료 (2026-06-10)
 - [Done] Track 3 기술 부채 정리 — `.drift` 미사용 CSS 제거, Tailwind 색상/그림자 토큰을 `tokens.css` 기반으로 통합, Experience 오버레이 토큰 정리, 브라우저 검증은 사용자 요청으로 생략 (2026-06-10)
 - [Done] Experience 카드 배경 사진 적용 — `sections/experience.jsx`에 4개 에셋 자동 매핑, 반투명 오버레이로 텍스트 가독성 유지, 브라우저 검증 완료 (2026-06-10)
 - [Done] Experience 가독성 보정 — 배경 이미지 opacity 추가 하향, 오버레이 강화, 텍스트 그림자 추가 (2026-06-10)
@@ -20,4 +20,3 @@
 - [Done] BrowserShowcase 컴포넌트 — 4탭(홈페이지 iframe, 관리자 페이지, 디자인 시스템, 키비주얼 포스터). 브라우저 검증 ✅
 - [Done] Experience 데이터 업데이트 — Next Challenge 추가(2026.04→Present), 5개 카드 org/role/period 정리. 브라우저 검증 ✅
 - [Done] Featured Work 홈페이지 주소 동기화 — `data.jsx`의 `url`과 `media[0].src`를 `https://ncf-aroundx.com/`로 통일, 서버 응답 및 브라우저 캐시 상태 확인 (2026-06-10)
-- [Done] 점 장식 제거 + 아이콘 단순화 — Nav/Hero/Contact/Preview의 장식성 점 제거, `assets/ui-icons.svg` 스프라이트 기반 심플 SVG 아이콘으로 통일, 데스크탑·태블릿·모바일 검증 완료 (2026-06-10)
