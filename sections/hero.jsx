@@ -1,198 +1,119 @@
+const HERO_PROOFS = [
+  { icon: 'layers', label: 'Product', detail: { ko: '문제를 기획하고 서비스로 구현', en: 'Turn problems into products' }, position: 'proof-a' },
+  { icon: 'briefcase', label: 'Operations', detail: { ko: '지속 가능한 실행 시스템 설계', en: 'Build repeatable operating systems' }, position: 'proof-b' },
+  { icon: 'globe', label: 'Global', detail: { ko: '더 넓은 세상과 연결', en: 'Connect people across borders' }, position: 'proof-c' },
+  { icon: 'sparkles', label: 'AI', detail: { ko: 'AI로 더 빠르게 문제 해결', en: 'Use AI to solve faster' }, position: 'proof-d' },
+];
+
+const HERO_STAT_ICONS = ['sparkles', 'briefcase', 'globe', 'medal'];
+const HERO_STAT_DESCRIPTIONS = [
+  { ko: '실제 사용자를 위한 서비스를 출시하고 운영했습니다.', en: 'Launched and operated a product for real users.' },
+  { ko: '다양한 스타트업과 협업하며 운영 문제를 해결했습니다.', en: 'Worked with startups to solve operating problems.' },
+  { ko: '파리 올림픽 현장에서 글로벌 경험을 쌓았습니다.', en: 'Built global operating experience at Paris 2024.' },
+  { ko: '브랜드와 파트너십을 구축해 실질적인 가치를 만들었습니다.', en: 'Built partnerships that created measurable value.' },
+];
+
 const Hero = () => {
   const { lang, t } = useLanguage();
-  const [open, setOpen] = React.useState(false);
-  const [photoH, setPhotoH] = React.useState(0);
-  const [copyH, setCopyH] = React.useState(0);
-  const [openCopyH, setOpenCopyH] = React.useState(0);
-  const photoRef = React.useRef(null);
-  const copyRef = React.useRef(null);
-  const openCopyRef = React.useRef(null);
-  const gridSize = photoH || 340;
-  const activeCopyH = open ? openCopyH : copyH;
-  const heroMinHeight = Math.max(gridSize, activeCopyH);
   const heroTitle = t(COPY.hero.title);
-  const heroTitleSize = lang === 'en' ? 'text-[42px] md:text-[56px] lg:text-[64px]' : 'text-[44px] md:text-[72px]';
-  const heroLineClass = lang === 'en' ? 'block' : 'block md:whitespace-nowrap';
-
-  React.useEffect(() => {
-    const observers = [];
-    if (photoRef.current) {
-      const photoObserver = new ResizeObserver((entries) => setPhotoH(entries[0].contentRect.height));
-      photoObserver.observe(photoRef.current);
-      observers.push(photoObserver);
-    }
-    if (copyRef.current) {
-      const copyObserver = new ResizeObserver((entries) => setCopyH(entries[0].contentRect.height));
-      copyObserver.observe(copyRef.current);
-      observers.push(copyObserver);
-    }
-    if (openCopyRef.current) {
-      const openCopyObserver = new ResizeObserver((entries) => setOpenCopyH(entries[0].contentRect.height));
-      openCopyObserver.observe(openCopyRef.current);
-      observers.push(openCopyObserver);
-    }
-    return () => observers.forEach((observer) => observer.disconnect());
-  }, [lang]);
-
-  React.useEffect(() => {
-    if (!copyRef.current) return;
-    setCopyH(copyRef.current.getBoundingClientRect().height);
-  }, [lang, heroTitle]);
-
-  React.useEffect(() => {
-    if (!openCopyRef.current) return;
-    setOpenCopyH(openCopyRef.current.getBoundingClientRect().height);
-  }, [lang]);
-
-  React.useEffect(() => {
-    if (!photoRef.current) return;
-    setPhotoH(photoRef.current.getBoundingClientRect().height);
-  }, []);
+  const heroKeywords = COPY.hero.keywords.filter((keyword) =>
+    ['#Product', '#AI', '#Execution', '#Global'].includes(keyword.en)
+  );
+  const intro = t({
+    ko: '비즈니스와 사용자의 문제를 현실적인 제품과 운영 시스템으로 전환하는 것을 목표로 합니다.',
+    en: 'I turn business and user problems into practical products and operating systems.',
+  });
 
   return (
-    <section id="top" className="spotlight relative overflow-hidden bg-grid">
-      <div className="relative mx-auto max-w-[1200px] px-6 pb-24 pt-20 md:px-8 md:pb-32 md:pt-28">
-        <div className="flex items-start gap-4">
-          <div className="relative min-w-0 flex-1 overflow-hidden" style={{ minHeight: `${heroMinHeight}px` }}>
-            <div
-              className={
-                'absolute inset-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.2,0,0,1)] ' +
-                (open ? 'pointer-events-none -translate-y-4 opacity-0' : 'pointer-events-auto translate-y-0 opacity-100')
-              }
-            >
-              <div ref={copyRef}>
-                <div className="mb-6 flex items-center">
-                  <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-trustdark">
-                    {t(COPY.hero.eyebrow)}
-                  </span>
-                </div>
+    <section id="top" className="spotlight relative overflow-hidden bg-grid hero-section">
+      <div className="relative mx-auto max-w-[1200px] px-6 pb-16 pt-14 md:px-8 md:pb-20 md:pt-20 lg:pt-24">
+        <div className="hero-layout">
+          <div className="hero-copy relative z-10">
+            <div className="hero-eyebrow">{t(COPY.hero.eyebrow)}</div>
 
-                <h1 className={`${heroTitleSize} font-extrabold leading-[1.05] tracking-[-0.025em] text-fg`}>
-                  <span className={heroLineClass}>{heroTitle.line1}</span>
-                  <span className={heroLineClass}>
-                    {heroTitle.prefix}
-                    <span className="grad-text">{heroTitle.accent}</span>
-                    {heroTitle.suffix}
-                  </span>
-                </h1>
+            <h1 className={lang === 'en' ? 'hero-title hero-title-en' : 'hero-title'}>
+              <span className="hero-title-line">{heroTitle.line1}</span>
+              <span className={lang === 'ko' ? 'hero-title-line hero-second-line grad-text' : 'hero-title-line hero-second-line'}>
+                {heroTitle.prefix}
+                {lang === 'ko' ? heroTitle.accent : <span className="grad-text">{heroTitle.accent}</span>}
+                {heroTitle.suffix}
+              </span>
+            </h1>
 
-                <div className="mt-7 flex flex-wrap gap-2">
-                  {COPY.hero.keywords.map((keyword) => (
-                    <Pill key={keyword.en} tone="ghost">
-                      {t(keyword)}
-                    </Pill>
-                  ))}
-                </div>
+            <p className="hero-intro">{intro}</p>
 
-                <div className="mt-9 flex flex-wrap items-center gap-3">
-                  <a
-                    href="#work"
-                    className="inline-flex h-11 items-center gap-2 rounded-md bg-trust px-5 text-[14px] font-semibold text-white shadow-md transition-colors hover:bg-trustdark"
-                  >
-                    {t(COPY.hero.workCta)} <Icon name="arrow-right" size={16} stroke={2} />
-                  </a>
-                  <a
-                    href="#contact"
-                    className="inline-flex h-11 items-center gap-2 rounded-md border border-fg-line px-5 text-[14px] font-semibold text-fg transition-colors hover:border-trust hover:text-trust"
-                  >
-                    <Icon name="mail" size={16} stroke={2} /> {t(COPY.hero.contactCta)}
-                  </a>
-                  <span className="ml-1 hidden items-center gap-2 text-[13px] text-fg-sub md:inline-flex">
-                    <Icon name="globe" size={14} stroke={1.8} /> {t(PROFILE.heroLocation)}
-                  </span>
-                </div>
-              </div>
+            <div className="hero-actions">
+              <a href="#work" className="hero-btn hero-btn-primary">
+                {t(COPY.hero.workCta)} <Icon name="arrow-right" size={16} stroke={2} />
+              </a>
+              <a href="#contact" className="hero-btn hero-btn-secondary">
+                <Icon name="mail" size={16} stroke={2} /> {t(COPY.hero.contactCta)}
+              </a>
             </div>
 
-            <div
-              className={
-                'absolute inset-0 flex flex-col transition-all duration-500 ease-[cubic-bezier(0.2,0,0,1)] ' +
-                (open ? 'pointer-events-auto translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0')
-              }
-            >
-              <div ref={openCopyRef}>
-                <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.14em] text-trust">{t(COPY.hero.noteLabel)}</p>
-                <p className="text-[22px] leading-[1.4] text-fg md:text-[28px]">{t(COPY.hero.greeting)}</p>
-                <div className="mt-4 max-w-[480px] space-y-4 text-[15px] leading-[1.65] md:text-[16px]">
-                  {COPY.hero.letter.map((paragraph, index) => (
-                    <p
-                      key={index}
-                      className={index === COPY.hero.letter.length - 1 ? 'text-fg whitespace-pre-line' : 'text-fg-sub whitespace-pre-line'}
-                    >
-                      {t(paragraph)}
-                    </p>
-                  ))}
-                </div>
-              </div>
+            <div className="hero-keywords">
+              {heroKeywords.map((keyword) => (
+                <Pill key={keyword.en} tone="ghost">{t(keyword)}</Pill>
+              ))}
+            </div>
+
+            <div className="hero-quote">
+              <span>“</span>
+              <p>{t({
+                ko: '좋은 아이디어는 실행될 때 세상을 바꿀 수 있습니다.',
+                en: 'A good idea can change the world when it is executed.',
+              })}</p>
+              <small>— Jeongwon Kim</small>
             </div>
           </div>
 
-          <div
-            className={
-              'hidden shrink-0 flex-col items-center gap-2 self-center transition-opacity duration-300 ease-[cubic-bezier(0.2,0,0,1)] md:flex ' +
-              (open ? 'opacity-0' : 'opacity-100')
-            }
-          >
-            <Icon name="arrow-right" size={22} stroke={1.8} className="text-fg-sub" />
-            <span className="text-[13px] tracking-wide text-fg-sub">{t(COPY.hero.clickHint)}</span>
-          </div>
+          <div className="hero-visual-wrap">
+            <div className="hero-orbit">
+              <div className="hero-globe" aria-hidden="true">
+                <div className="hero-globe-lat lat-a" />
+                <div className="hero-globe-lat lat-b" />
+                <div className="hero-globe-lon lon-a" />
+                <div className="hero-globe-lon lon-b" />
+              </div>
+              <div className="hero-orbit-ring hero-orbit-ring-a" />
+              <div className="hero-orbit-ring hero-orbit-ring-b" />
+              <div className="hero-orbit-node node-a" />
+              <div className="hero-orbit-node node-b" />
+              <div className="hero-orbit-node node-c" />
 
-          <div
-            className="relative z-[1] hidden shrink-0 items-start justify-end md:flex"
-            style={{ width: open ? `${340 + 16 + gridSize}px` : '340px' }}
-          >
-            <div className="relative w-[340px] shrink-0 cursor-pointer" onClick={() => setOpen((v) => !v)}>
-              <img
-                ref={photoRef}
-                src="assets/profile-nobg.png"
-                alt="Jeongwon Kim"
-                className="block h-auto w-full object-contain object-bottom"
-                style={{
-                  maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
-                }}
-              />
-            </div>
-
-            <div
-              className="grid shrink-0 grid-cols-2 grid-rows-2 gap-2 overflow-hidden transition-[width,margin] duration-500 ease-[cubic-bezier(0.2,0,0,1)]"
-              style={{
-                width: open ? `${gridSize}px` : '0px',
-                height: `${gridSize}px`,
-                marginLeft: open ? '16px' : '0px',
-              }}
-            >
-              {COPY.hero.hobbies.map((img) => (
+              <div className="hero-photo-shell">
                 <img
-                  key={img.src}
-                  src={img.src}
-                  alt={t(img.alt)}
-                  className={
-                    'block h-full w-full rounded-[10px] object-cover transition-all duration-300 ease-[cubic-bezier(0.2,0,0,1)] ' +
-                    (open ? 'scale-100 opacity-100' : 'scale-[0.92] opacity-0')
-                  }
+                  src="assets/hero-portrait-final.webp"
+                  alt="Jeongwon Kim"
+                  className="hero-portrait"
                 />
+              </div>
+
+              {HERO_PROOFS.map((proof) => (
+                <div key={proof.label} className={`floating-proof ${proof.position}`}>
+                  <span className="floating-proof-icon"><Icon name={proof.icon} size={17} stroke={1.9} /></span>
+                  <span>
+                    <strong>{proof.label}</strong>
+                    <small>{t(proof.detail)}</small>
+                  </span>
+                  <Icon name="arrow-right" size={13} stroke={1.8} className="floating-proof-arrow" />
+                </div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="reveal mt-8 grid grid-cols-2 gap-3 md:mt-10 md:grid-cols-4 md:gap-4">
-          {STATS.map((s, i) => (
-            <div key={i} className="glass rounded-xl p-5 md:p-6">
-              <div
-                className={
-                  'flex flex-wrap items-baseline text-trust ' +
-                  (s.compact
-                    ? 'gap-x-2 text-[32px] font-extrabold leading-none tracking-[-0.03em] md:text-[36px] lg:text-[40px]'
-                    : 'gap-x-1 text-[40px] font-extrabold leading-none tracking-[-0.03em] md:text-[48px]')
-                }
-              >
-                <span>{s.value}</span>
-                <span>{t(s.suffix)}</span>
+        <div className="proof-strip reveal">
+          {STATS.map((stat, index) => (
+            <div key={`${stat.value}-${index}`} className="proof-strip-item">
+              <div className="proof-strip-icon">
+                <Icon name={HERO_STAT_ICONS[index] || 'sparkles'} size={22} stroke={1.8} />
               </div>
-              <div className="mt-2 text-[14px] font-semibold text-fg">{t(s.label)}</div>
-              <div className="mt-1 text-[12px] text-fg-sub">{t(s.sub)}</div>
+              <div className="proof-strip-copy proof-strip-copy-strong">
+                <strong className="proof-stat-value">{stat.value}<span>{t(stat.suffix)}</span></strong>
+                <span className="proof-stat-label">{t(stat.label)}</span>
+                <small>{t(HERO_STAT_DESCRIPTIONS[index])}</small>
+              </div>
             </div>
           ))}
         </div>

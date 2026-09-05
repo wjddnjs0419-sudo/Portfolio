@@ -1,0 +1,34 @@
+/* Final visual corrections after browser screenshot review. */
+
+/* Old position rules in tokens.css set opposite edges on the proof cards.
+   Reset all four edges so the mockup cards keep their natural height. */
+.floating-proof{top:auto;right:auto;bottom:auto;left:auto;height:auto;min-height:0}
+.proof-a{top:12%;left:-2%}
+.proof-b{bottom:24%;left:-8%}
+.proof-c{top:21%;right:-6%}
+.proof-d{bottom:17%;right:-4%}
+
+/* Give the portrait/globe the same visual dominance as the approved hero mockup. */
+.hero-globe{width:420px;height:420px;top:42%}
+.hero-photo-shell{width:350px;height:465px}
+.hero-visual-wrap,.hero-orbit{min-height:520px;height:520px}
+
+/* NCF follows the approved reverse editorial layout: visual left, copy right. */
+.project-canvas-web{grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr)}
+.project-canvas-web .project-visual{order:1}
+.project-canvas-web .project-editorial-copy{order:2}
+.project-canvas-web .project-details{order:3}
+
+@media(max-width:1023px){
+  .proof-a{top:12%;left:1%}.proof-b{bottom:25%;left:0}.proof-c{top:20%;right:1%}.proof-d{bottom:18%;right:1%}
+  .project-canvas-web{grid-template-columns:1fr}
+  .project-canvas-web .project-editorial-copy,.project-canvas-web .project-visual{order:initial}
+  .project-canvas-web .project-details{order:initial}
+}
+
+@media(max-width:767px){
+  .hero-visual-wrap,.hero-orbit{min-height:400px;height:400px}
+  .hero-globe{width:315px;height:315px}
+  .hero-photo-shell{width:250px;height:338px}
+  .proof-a{top:10%;left:0}.proof-b{bottom:24%;left:0}.proof-c{top:17%;right:0}.proof-d{bottom:16%;right:0}
+}

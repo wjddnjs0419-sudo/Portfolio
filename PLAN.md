@@ -6,7 +6,7 @@
 
 ## Pending Approval
 
-없음
+- [Review] 포트폴리오 비주얼 리디자인 — `feat/portfolio-visual-redesign`에서 Hero / Featured Work / Paris 2024 Experience / Capabilities / Closing CTA 구현 및 1280·768·375px Chromium 검증 완료. Draft PR #1에서 사용자 시각 검토 후 `main` 반영 여부 결정 (2026-09-05)
 
 ---
 

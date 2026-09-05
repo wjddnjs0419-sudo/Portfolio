@@ -1,0 +1,125 @@
+import { chromium } from 'playwright';
+
+const BASE_URL = process.env.PORTFOLIO_URL || 'http://127.0.0.1:4173/';
+const viewports = [
+  { name: 'desktop', width: 1280, height: 900 },
+  { name: 'tablet', width: 768, height: 1024 },
+  { name: 'mobile', width: 375, height: 812 },
+];
+
+const browser = await chromium.launch({ headless: true });
+
+try {
+  for (const viewport of viewports) {
+    const page = await browser.newPage({ viewport });
+    const runtimeErrors = [];
+
+    page.on('pageerror', (error) => runtimeErrors.push(`pageerror: ${error.message}`));
+    page.on('console', (message) => {
+      if (message.type() === 'error') runtimeErrors.push(`console: ${message.text()}`);
+    });
+
+    await page.goto(BASE_URL, { waitUntil: 'networkidle', timeout: 60_000 });
+    await page.waitForSelector('#top h1', { timeout: 30_000 });
+    await page.waitForTimeout(1_000);
+
+    const state = await page.evaluate(() => {
+      const ncfIframe = document.querySelector('.project-visual-web iframe');
+      const demoVideo = document.querySelector('.project-visual-date video');
+      const experienceText = document.querySelector('#experience')?.textContent || '';
+      return {
+        width: window.innerWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+        hero: document.querySelector('#top h1')?.textContent?.trim() || '',
+        heroTitleLines: document.querySelectorAll('.hero-title-line').length,
+        hasProofStrip: Boolean(document.querySelector('.proof-strip')),
+        hasProjectCanvas: Boolean(document.querySelector('.project-canvas')),
+        hasFeaturedExperience: Boolean(document.querySelector('.featured-experience')),
+        hasMarathonMedia: Boolean(document.querySelector('.supporting-experience-media')),
+        hasCapabilities: Boolean(document.querySelector('.capability-pillars')),
+        hasClosingCta: Boolean(document.querySelector('.closing-cta')),
+        hasClosingPhoto: Boolean(document.querySelector('.closing-cta-photo')),
+        brokenImages: [...document.images]
+          .filter((image) => image.complete && image.naturalWidth === 0)
+          .map((image) => image.getAttribute('src')),
+        videoCount: document.querySelectorAll('video').length,
+        demoHasControls: Boolean(demoVideo?.controls),
+        ncfIframeSrc: ncfIframe?.getAttribute('src') || '',
+        experienceText,
+      };
+    });
+
+    if (!state.hero.includes('문제를 발견하고') || state.heroTitleLines !== 2) {
+      throw new Error(`${viewport.name}: hero headline is not the intended two-line composition: ${state.hero}`);
+    }
+    if (state.scrollWidth > state.width + 2) {
+      throw new Error(`${viewport.name}: horizontal overflow ${state.scrollWidth}px > ${state.width}px`);
+    }
+    if (!state.hasProofStrip || !state.hasProjectCanvas || !state.hasFeaturedExperience || !state.hasMarathonMedia || !state.hasCapabilities || !state.hasClosingCta || !state.hasClosingPhoto) {
+      throw new Error(`${viewport.name}: one or more mockup-parity sections did not render`);
+    }
+    if (state.brokenImages.length) {
+      throw new Error(`${viewport.name}: broken images: ${state.brokenImages.join(', ')}`);
+    }
+    if (state.videoCount < 1 || !state.demoHasControls) {
+      throw new Error(`${viewport.name}: Date-navi playable demo video did not render`);
+    }
+    if (!state.ncfIframeSrc.includes('https://ncf-aroundx.com/')) {
+      throw new Error(`${viewport.name}: Next Challenge live homepage iframe was not restored`);
+    }
+    if (state.experienceText.includes('Next Challenge') || state.experienceText.includes('NEOMA')) {
+      throw new Error(`${viewport.name}: Experience still contains duplicated NCF or education content`);
+    }
+    if (runtimeErrors.length) {
+      throw new Error(`${viewport.name}: runtime errors: ${runtimeErrors.join(' | ')}`);
+    }
+
+    if (viewport.width < 768) {
+      await page.getByRole('button', { name: '메뉴 열기' }).click();
+    }
+
+    const enButton = page.getByRole('button', { name: 'EN' }).filter({ visible: true }).first();
+    await enButton.click();
+    await page.waitForFunction(() => document.documentElement.lang === 'en');
+    const englishHero = await page.locator('#top h1').innerText();
+    if (!englishHero.includes('I find problems')) {
+      throw new Error(`${viewport.name}: English toggle did not update hero: ${englishHero}`);
+    }
+
+    const koButton = page.getByRole('button', { name: 'KO' }).filter({ visible: true }).first();
+    await koButton.click();
+    await page.waitForFunction(() => document.documentElement.lang === 'ko');
+
+    if (viewport.width < 768) {
+      await page.getByRole('button', { name: '메뉴 닫기' }).click();
+    }
+
+    await page.evaluate(() => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    });
+    const revealElements = page.locator('.reveal');
+    const revealCount = await revealElements.count();
+    for (let index = 0; index < revealCount; index += 1) {
+      await revealElements.nth(index).scrollIntoViewIfNeeded();
+      await page.waitForTimeout(100);
+    }
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(220);
+
+    const unrevealedCount = await page.locator('.reveal:not(.in)').count();
+    if (unrevealedCount > 0) {
+      throw new Error(`${viewport.name}: ${unrevealedCount} reveal elements never became visible while scrolling`);
+    }
+
+    await page.screenshot({
+      path: `artifacts/portfolio-${viewport.name}.png`,
+      fullPage: true,
+    });
+
+    await page.close();
+  }
+
+  console.log('browser smoke checks passed');
+} finally {
+  await browser.close();
+}
