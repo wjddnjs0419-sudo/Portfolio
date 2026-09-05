@@ -51,16 +51,22 @@ const ExperienceSection = () => {
   const featured = EXPERIENCES.find((experience) => experience.id === 'paris-2024');
   const supporting = EXPERIENCES.filter((experience) => experience.id === 'sports-events');
 
+  const experienceTitle = t({
+    ko: { line1: '글로벌, 운영, 비즈니스의 맥락에서', line2: '문제를 구조화하고,', accent: '실제로 해결해왔습니다.' },
+    en: { line1: 'Across global, operations, and business,', line2: 'I structure problems and', accent: 'solve them in practice.' },
+  });
+
   return (
     <section id="experience" className="border-y border-fg-line bg-fg-soft experience-section">
       <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-8 md:py-24">
         <div className="experience-feature-row">
           <div className="experience-intro reveal">
             <div className="section-micro-title">{t({ ko: '경험 · FEATURED EXPERIENCE', en: 'EXPERIENCE · FEATURED EXPERIENCE' })}</div>
-            <h2>{t({
-              ko: '글로벌, 운영, 비즈니스의 맥락에서 문제를 구조화하고,\n실제로 해결해왔습니다.',
-              en: 'Across global, operations, and business contexts,\nI structure problems and solve them in practice.',
-            })}</h2>
+            <h2>
+              <span>{experienceTitle.line1}</span>
+              <span>{experienceTitle.line2}</span>
+              <strong>{experienceTitle.accent}</strong>
+            </h2>
             <p>{t({
               ko: '다양한 현장에서 사람, 기술, 운영을 연결하며 실질적인 변화를 만들어낸 경험들입니다.',
               en: 'Experiences connecting people, technology, and operations to create practical impact.',
