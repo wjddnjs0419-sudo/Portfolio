@@ -5,7 +5,7 @@ const HERO_PROOFS = [
   { icon: 'sparkles', label: 'AI', detail: { ko: 'AI로 더 빠르게 문제 해결', en: 'Use AI to solve faster' }, position: 'proof-d' },
 ];
 
-const HERO_STAT_ICONS = ['app-store', 'users', 'globe', 'handshake'];
+const HERO_STAT_ICONS = ['layers', 'briefcase', 'globe', 'medal'];
 
 const Hero = () => {
   const { lang, t } = useLanguage();
