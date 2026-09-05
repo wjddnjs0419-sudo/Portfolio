@@ -3,65 +3,26 @@ const ContactSection = () => {
   const availability = t({ ko: '즉시 근무 가능', en: 'Available immediately' });
 
   return (
-    <section id="contact" className="border-t border-fg-line bg-fg-soft">
-      <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-8 md:py-28">
+    <section id="contact" className="border-t border-fg-line bg-fg-soft contact-section">
+      <div className="mx-auto max-w-[1200px] px-6 py-16 md:px-8 md:py-20">
         <div className="closing-cta reveal">
-          <div className="closing-cta-orbit closing-cta-orbit-a" />
-          <div className="closing-cta-orbit closing-cta-orbit-b" />
-
-          <div className="relative z-10 max-w-[760px]">
-            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-trust md:text-[12px]">
-              {t(COPY.sections.contact.eyebrow)}
-            </div>
-            <h2 className="mt-3 whitespace-pre-line text-[38px] font-extrabold leading-[1.08] tracking-[-0.035em] text-fg md:text-[54px]">
-              {t(COPY.sections.contact.title)}
-            </h2>
-            <p
-              className="mt-5 max-w-[610px] text-[15px] leading-[1.75] text-fg-sub md:text-[17px]"
-              dangerouslySetInnerHTML={{ __html: t(COPY.sections.contact.sub) }}
-            />
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={`mailto:${PROFILE.email}`}
-                className="inline-flex h-12 items-center gap-2 rounded-xl bg-trust px-5 text-[14px] font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-trustdark hover:shadow-lg"
-              >
-                <Icon name="mail" size={16} stroke={2} />
-                {t({ ko: '이메일 보내기', en: 'Send an email' })}
-              </a>
-              <a
-                href={PROFILE.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-12 items-center gap-2 rounded-xl border border-fg-line bg-fg-page px-5 text-[14px] font-semibold text-fg transition-all hover:-translate-y-0.5 hover:border-trust hover:text-trust"
-              >
-                <Icon name="linkedin" size={16} stroke={1.9} />
-                LinkedIn
-              </a>
+          <img className="closing-cta-photo" src="assets/Paris 2024.jpeg" alt="Paris 2024" />
+          <div className="closing-cta-photo-overlay" />
+          <div className="closing-cta-copy">
+            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-trust">{t(COPY.sections.contact.eyebrow)}</div>
+            <h2>{t({ ko: '사업과 기술이 서비스로 만나는 자리에서.', en: 'Where business and technology become real services.' })}</h2>
+            <p>{t({ ko: '문제를 발견하고 직접 움직이는 사람을 찾고 있다면 연락 주세요. 보통 24시간 이내 회신드립니다.', en: 'If you are looking for someone who finds problems and moves them forward, get in touch. I usually reply within 24 hours.' })}</p>
+            <div className="closing-cta-actions">
+              <a href={`mailto:${PROFILE.email}`} className="hero-btn hero-btn-primary"><Icon name="mail" size={16} stroke={2} />{t({ ko: '이메일 보내기', en: 'Send an email' })}</a>
+              <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer" className="hero-btn hero-btn-secondary"><Icon name="linkedin" size={16} stroke={1.9} />LinkedIn</a>
             </div>
           </div>
-
-          <div className="closing-status relative z-10">
-            <div className="closing-status-label">{t({ ko: 'Open to opportunities', en: 'Open to opportunities' })}</div>
+          <div className="closing-status">
+            <div className="closing-status-label">Open to opportunities</div>
             <strong>{availability}</strong>
             <span>{t(PROFILE.roleFocus)}</span>
-            <span>{t({ ko: 'Seoul, South Korea', en: 'Seoul, South Korea' })}</span>
+            <span>Seoul, South Korea</span>
           </div>
-        </div>
-
-        <div className="contact-row reveal">
-          <a href={`mailto:${PROFILE.email}`}>
-            <Icon name="mail" size={16} stroke={1.8} />
-            <span><small>Email</small>{PROFILE.email}</span>
-          </a>
-          <a href={`tel:${PROFILE.phone}`}>
-            <Icon name="phone" size={16} stroke={1.8} />
-            <span><small>Phone</small>{PROFILE.phone}</span>
-          </a>
-          <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer">
-            <Icon name="linkedin" size={16} stroke={1.8} />
-            <span><small>LinkedIn</small>Jeongwon Kim</span>
-          </a>
         </div>
       </div>
 
