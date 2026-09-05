@@ -34,6 +34,7 @@ const ProjectVisualCollage = ({ project }) => {
           )}
         </div>
         <div className="device-phone device-phone-right"><div className="device-island" /><img src={result?.src} alt={result ? t(result.label) : 'Date-navi result'} /></div>
+        <div className="project-orbit-caption project-orbit-caption-date">Better Dates<br />Brighter Days</div>
       </div>
     );
   }
@@ -62,6 +63,7 @@ const ProjectVisualCollage = ({ project }) => {
         <div className="browser-bar compact"><span /><span /><span /></div>
         <img src={figma?.src} alt={figma ? t(figma.label) : 'Figma UI'} />
       </div>
+      <div className="project-orbit-caption project-orbit-caption-web">Empowering Startups<br />for a Brighter Tomorrow</div>
     </div>
   );
 };
@@ -90,7 +92,7 @@ const ProjectCanvas = ({ project, index }) => {
   const projectName = isDateNavi ? 'Date-navi' : 'Next Challenge';
   const subline = isDateNavi
     ? t({ ko: '데이트 계획의 반복 검색을 하나의 AI 추천 흐름으로.', en: 'Turn repeated date planning searches into one AI recommendation flow.' })
-    : t({ ko: '100개 스타트업 프로그램 운영을 하나의 디지털 시스템으로.', en: 'Turn operations for 100 startups into one digital system.' });
+    : t({ ko: '100개 스타트업 프로그램을 하나의 디지털 운영 시스템으로.', en: 'Turn operations for 100 startups into one digital system.' });
 
   return (
     <article className={`project-canvas reveal ${isDateNavi ? 'project-canvas-date' : 'project-canvas-web'}`}>
@@ -111,6 +113,10 @@ const ProjectCanvas = ({ project, index }) => {
 
         <div className="project-metrics">
           {project.metrics.map((metric) => <div key={metric.v}><strong>{metric.v}</strong><span>{t(metric.l)}</span></div>)}
+        </div>
+
+        <div className="project-badges">
+          {(project.badges || []).slice(0, 5).map((badge) => <span key={badge}>{badge}</span>)}
         </div>
 
         <div className="project-actions">
@@ -136,7 +142,16 @@ const ProjectsSection = () => {
   return (
     <section id="work" className="bg-fg-page projects-section">
       <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-8 md:py-24">
-        <div className="section-micro-title">{t({ ko: '주요 프로젝트 · PRODUCT IN PRACTICE', en: 'SELECTED WORK · PRODUCT IN PRACTICE' })}</div>
+        <div className="projects-intro reveal">
+          <div>
+            <div className="section-micro-title">{t({ ko: '주요 프로젝트 · PRODUCT IN PRACTICE', en: 'SELECTED WORK · PRODUCT IN PRACTICE' })}</div>
+            <h2>{t({ ko: '아이디어를 넘어,\n실제 서비스로.', en: 'Beyond ideas,\ninto real products.' })}</h2>
+          </div>
+          <p>{t({
+            ko: '사용자의 문제를 제품과 운영 시스템으로 전환하여, 더 나은 경험을 만드는 프로젝트입니다.',
+            en: 'Projects where user problems became products and operating systems that create better experiences.',
+          })}</p>
+        </div>
         <div className="project-stack">
           {PROJECTS.map((project, index) => <ProjectCanvas key={project.id} project={project} index={index} />)}
         </div>
