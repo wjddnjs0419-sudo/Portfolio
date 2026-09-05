@@ -31,11 +31,14 @@ try {
         width: window.innerWidth,
         scrollWidth: document.documentElement.scrollWidth,
         hero: document.querySelector('#top h1')?.textContent?.trim() || '',
+        heroTitleLines: document.querySelectorAll('.hero-title-line').length,
         hasProofStrip: Boolean(document.querySelector('.proof-strip')),
-        hasProjectEditorial: Boolean(document.querySelector('.project-editorial')),
+        hasProjectCanvas: Boolean(document.querySelector('.project-canvas')),
         hasFeaturedExperience: Boolean(document.querySelector('.featured-experience')),
+        hasMarathonMedia: Boolean(document.querySelector('.supporting-experience-media')),
         hasCapabilities: Boolean(document.querySelector('.capability-pillars')),
         hasClosingCta: Boolean(document.querySelector('.closing-cta')),
+        hasClosingPhoto: Boolean(document.querySelector('.closing-cta-photo')),
         brokenImages: [...document.images]
           .filter((image) => image.complete && image.naturalWidth === 0)
           .map((image) => image.getAttribute('src')),
@@ -46,14 +49,14 @@ try {
       };
     });
 
-    if (!state.hero.includes('문제를 발견하고')) {
-      throw new Error(`${viewport.name}: Korean hero did not render: ${state.hero}`);
+    if (!state.hero.includes('문제를 발견하고') || state.heroTitleLines !== 2) {
+      throw new Error(`${viewport.name}: hero headline is not the intended two-line composition: ${state.hero}`);
     }
     if (state.scrollWidth > state.width + 2) {
       throw new Error(`${viewport.name}: horizontal overflow ${state.scrollWidth}px > ${state.width}px`);
     }
-    if (!state.hasProofStrip || !state.hasProjectEditorial || !state.hasFeaturedExperience || !state.hasCapabilities || !state.hasClosingCta) {
-      throw new Error(`${viewport.name}: one or more redesigned sections did not render`);
+    if (!state.hasProofStrip || !state.hasProjectCanvas || !state.hasFeaturedExperience || !state.hasMarathonMedia || !state.hasCapabilities || !state.hasClosingCta || !state.hasClosingPhoto) {
+      throw new Error(`${viewport.name}: one or more mockup-parity sections did not render`);
     }
     if (state.brokenImages.length) {
       throw new Error(`${viewport.name}: broken images: ${state.brokenImages.join(', ')}`);
