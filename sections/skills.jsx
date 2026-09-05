@@ -23,6 +23,7 @@ const CAPABILITY_PILLARS = [
 
 const TOOL_ORDER = [
   'Figma',
+  'React Native · Expo',
   'Supabase',
   'SQL',
   'GA4',
@@ -36,7 +37,10 @@ const TOOL_ORDER = [
 
 const SkillsSection = () => {
   const { t } = useLanguage();
-  const allSkillItems = SKILLS.flatMap((skill) => skill.items);
+  const allSkillItems = [
+    ...SKILLS.flatMap((skill) => skill.items),
+    ...PROJECTS.flatMap((project) => project.badges || []),
+  ];
   const tools = TOOL_ORDER.filter((tool) => allSkillItems.includes(tool));
   const highlights = [
     { value: 'App Store', label: { ko: 'Date-navi 정식 출시', en: 'Date-navi released' } },
@@ -91,7 +95,7 @@ const SkillsSection = () => {
               <Icon name="globe" size={17} stroke={1.8} />
               <span className="text-[11px] font-bold uppercase tracking-[0.16em]">{t(COPY.sections.skills.languagesTitle)}</span>
             </div>
-            <div className="mt-5 divide-y divide-fg-line">
+            <div className="mt-5 divide-y divide-line">
               {LANGUAGES.map((language) => (
                 <div key={language.lang.en} className="flex items-center justify-between gap-4 py-4 first:pt-0 last:pb-0">
                   <strong className="text-[16px] text-fg">{t(language.lang)}</strong>
