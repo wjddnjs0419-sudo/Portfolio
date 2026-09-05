@@ -37,7 +37,6 @@ const FeaturedExperience = ({ experience }) => {
 
 const SupportingExperience = ({ experience, index }) => {
   const { t } = useLanguage();
-  const period = experience.id === 'next-challenge' ? '2026.04 — 2026.06' : experience.period;
 
   return (
     <article className="supporting-experience reveal">
@@ -45,7 +44,7 @@ const SupportingExperience = ({ experience, index }) => {
       <div className="supporting-experience-body">
         <div className="supporting-experience-meta">
           <span>{experience.tag}</span>
-          <span>{period}</span>
+          <span>{experience.period}</span>
         </div>
         <h4>{t(experience.org)}</h4>
         <p className="supporting-experience-role">{experience.role}</p>
@@ -67,7 +66,7 @@ const SupportingExperience = ({ experience, index }) => {
 const ExperienceSection = () => {
   const { t } = useLanguage();
   const featured = EXPERIENCES.find((experience) => experience.id === 'paris-2024');
-  const supporting = EXPERIENCES.filter((experience) => experience.id !== 'paris-2024');
+  const supporting = EXPERIENCES.filter((experience) => experience.id === 'sports-events');
 
   return (
     <section id="experience" className="border-y border-fg-line bg-fg-soft">
@@ -75,19 +74,24 @@ const ExperienceSection = () => {
         <Headline
           eyebrow={t(COPY.sections.experience.eyebrow)}
           title={t({
-            ko: '글로벌 현장부터 사업 운영까지, 직접 움직였습니다.',
-            en: 'From global events to business operations, I worked on the ground.',
+            ko: '글로벌 현장과 파트너십 경험, 직접 움직였습니다.',
+            en: 'Hands-on experience in global operations and partnerships.',
           })}
-          sub={t(COPY.sections.experience.sub)}
+          sub={t({
+            ko: 'Paris 2024 현장 운영과 교내 마라톤 스폰서십처럼, 실제 이해관계자와 결과를 만든 경험만 담았습니다.',
+            en: 'Focused on hands-on experiences that produced real outcomes with stakeholders, from Paris 2024 operations to marathon sponsorship.',
+          })}
         />
 
         {featured && <FeaturedExperience experience={featured} />}
 
-        <div className="supporting-experience-list mt-8 md:mt-10">
-          {supporting.map((experience, index) => (
-            <SupportingExperience key={experience.id} experience={experience} index={index} />
-          ))}
-        </div>
+        {supporting.length > 0 && (
+          <div className="supporting-experience-list mt-8 md:mt-10">
+            {supporting.map((experience, index) => (
+              <SupportingExperience key={experience.id} experience={experience} index={index} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
