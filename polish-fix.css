@@ -1,0 +1,31 @@
+/* Final visual fixes after rendered comparison */
+@media (min-width: 1024px) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1.08fr) minmax(430px, .92fr) !important;
+    gap: 18px !important;
+  }
+  .hero-copy { min-width: 0; }
+  .hero-title {
+    max-width: 720px !important;
+    font-size: clamp(56px, 4.8vw, 68px) !important;
+    overflow: visible !important;
+  }
+  .hero-title-en { font-size: clamp(48px, 4.5vw, 64px) !important; }
+  .hero-second-line { white-space: nowrap !important; }
+  .hero-visual-wrap { margin-left: -8px; }
+  .hero-photo-shell { width: 382px !important; height: 520px !important; }
+  .hero-portrait {
+    border-radius: 0 !important;
+    -webkit-mask-image: radial-gradient(ellipse 78% 92% at 50% 48%, #000 0%, #000 61%, rgba(0,0,0,.92) 70%, transparent 91%) !important;
+    mask-image: radial-gradient(ellipse 78% 92% at 50% 48%, #000 0%, #000 61%, rgba(0,0,0,.92) 70%, transparent 91%) !important;
+  }
+  .proof-a { left: -2% !important; }
+  .proof-b { left: -5% !important; }
+  .proof-c { right: -4% !important; }
+  .proof-d { right: -1% !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-title { font-size: 52px !important; }
+  .hero-second-line { white-space: nowrap !important; }
+}
