@@ -139,13 +139,18 @@ const ProjectCanvas = ({ project, index }) => {
 
 const ProjectsSection = () => {
   const { t } = useLanguage();
+  const workTitle = t({
+    ko: { line1: '아이디어를 넘어,', accent: '실제 서비스로.' },
+    en: { line1: 'Beyond ideas,', accent: 'into real products.' },
+  });
+
   return (
     <section id="work" className="bg-fg-page projects-section">
       <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-8 md:py-24">
         <div className="projects-intro reveal">
           <div>
-            <div className="section-micro-title">{t({ ko: '주요 프로젝트 · PRODUCT IN PRACTICE', en: 'SELECTED WORK · PRODUCT IN PRACTICE' })}</div>
-            <h2>{t({ ko: '아이디어를 넘어,\n실제 서비스로.', en: 'Beyond ideas,\ninto real products.' })}</h2>
+            <div className="section-micro-title">Selected Work</div>
+            <h2><span>{workTitle.line1}</span><strong>{workTitle.accent}</strong></h2>
           </div>
           <p>{t({
             ko: '사용자의 문제를 제품과 운영 시스템으로 전환하여, 더 나은 경험을 만드는 프로젝트입니다.',
