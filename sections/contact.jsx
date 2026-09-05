@@ -1,66 +1,74 @@
 const ContactSection = () => {
   const { t } = useLanguage();
+  const availability = t({ ko: '즉시 근무 가능', en: 'Available immediately' });
 
   return (
     <section id="contact" className="border-t border-fg-line bg-fg-soft">
       <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-8 md:py-28">
-        <div className="reveal glass grid items-center gap-10 rounded-2xl p-8 md:grid-cols-[1.3fr_1fr] md:p-12">
-          <div>
-            <div className="text-[12px] font-bold uppercase tracking-[0.16em] text-trust">{t(COPY.sections.contact.eyebrow)}</div>
-            <h2 className="mt-2 whitespace-pre-line text-[32px] font-extrabold leading-[1.1] tracking-[-0.02em] text-fg md:text-[44px]">
+        <div className="closing-cta reveal">
+          <div className="closing-cta-orbit closing-cta-orbit-a" />
+          <div className="closing-cta-orbit closing-cta-orbit-b" />
+
+          <div className="relative z-10 max-w-[760px]">
+            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-trust md:text-[12px]">
+              {t(COPY.sections.contact.eyebrow)}
+            </div>
+            <h2 className="mt-3 whitespace-pre-line text-[38px] font-extrabold leading-[1.08] tracking-[-0.035em] text-fg md:text-[54px]">
               {t(COPY.sections.contact.title)}
             </h2>
             <p
-              className="mt-4 max-w-[560px] text-[15px] leading-[1.7] text-fg-sub"
+              className="mt-5 max-w-[610px] text-[15px] leading-[1.75] text-fg-sub md:text-[17px]"
               dangerouslySetInnerHTML={{ __html: t(COPY.sections.contact.sub) }}
             />
-            <div className="mt-6 flex items-center gap-3">
-              <a href={`mailto:${PROFILE.email}`} aria-label={t(COPY.sections.contact.emailAria)} className="icon-btn">
-                <Icon name="mail" size={18} stroke={1.8} />
-              </a>
-              <a href={`tel:${PROFILE.phone}`} aria-label={t(COPY.sections.contact.phoneAria)} className="icon-btn">
-                <Icon name="phone" size={18} stroke={1.8} />
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={`mailto:${PROFILE.email}`}
+                className="inline-flex h-12 items-center gap-2 rounded-xl bg-trust px-5 text-[14px] font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-trustdark hover:shadow-lg"
+              >
+                <Icon name="mail" size={16} stroke={2} />
+                {t({ ko: '이메일 보내기', en: 'Send an email' })}
               </a>
               <a
                 href={PROFILE.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={t(COPY.sections.contact.linkedinAria)}
-                className="icon-btn"
+                className="inline-flex h-12 items-center gap-2 rounded-xl border border-fg-line bg-fg-page px-5 text-[14px] font-semibold text-fg transition-all hover:-translate-y-0.5 hover:border-trust hover:text-trust"
               >
-                <Icon name="linkedin" size={18} stroke={1.8} />
+                <Icon name="linkedin" size={16} stroke={1.9} />
+                LinkedIn
               </a>
             </div>
           </div>
 
-          <div className="rounded-xl border border-fg-line bg-fg-page p-6">
-            <div className="text-[12px] font-bold uppercase tracking-[0.14em] text-trust">{t(COPY.sections.contact.statusLabel)}</div>
-            <div className="mt-3">
-              <span className="text-[15px] font-bold text-fg">{t(COPY.sections.contact.statusValue)}</span>
-            </div>
-            <div className="mt-2 text-[13px] text-fg-sub">
-              {t(COPY.sections.contact.availability)} <b className="text-fg">{t(PROFILE.status)}</b>
-            </div>
-
-            <div className="mt-5 space-y-3 border-t border-fg-line pt-5">
-              <div className="flex items-center gap-2 text-[13px] text-fg-sub">
-                <Icon name="globe" size={14} stroke={1.8} /> {t(PROFILE.location)}
-              </div>
-              <div className="flex items-center gap-2 text-[13px] text-fg-sub">
-                <Icon name="briefcase" size={14} stroke={1.8} /> {t(PROFILE.roleFocus)}
-              </div>
-              <div className="flex items-center gap-2 text-[13px] text-fg-sub">
-                <Icon name="sparkles" size={14} stroke={1.8} /> {t(PROFILE.strengths)}
-              </div>
-            </div>
+          <div className="closing-status relative z-10">
+            <div className="closing-status-label">{t({ ko: 'Open to opportunities', en: 'Open to opportunities' })}</div>
+            <strong>{availability}</strong>
+            <span>{t(PROFILE.roleFocus)}</span>
+            <span>{t({ ko: 'Seoul, South Korea', en: 'Seoul, South Korea' })}</span>
           </div>
+        </div>
+
+        <div className="contact-row reveal">
+          <a href={`mailto:${PROFILE.email}`}>
+            <Icon name="mail" size={16} stroke={1.8} />
+            <span><small>Email</small>{PROFILE.email}</span>
+          </a>
+          <a href={`tel:${PROFILE.phone}`}>
+            <Icon name="phone" size={16} stroke={1.8} />
+            <span><small>Phone</small>{PROFILE.phone}</span>
+          </a>
+          <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer">
+            <Icon name="linkedin" size={16} stroke={1.8} />
+            <span><small>LinkedIn</small>Jeongwon Kim</span>
+          </a>
         </div>
       </div>
 
       <div className="border-t border-fg-line">
         <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 px-6 py-6 text-[12px] text-fg-sub md:px-8">
           <span>{t(COPY.sections.contact.footerPrimary)}</span>
-          <span className="opacity-70">{t(COPY.sections.contact.footerSecondary)}</span>
+          <span className="opacity-70">Business · Product · AI · Global</span>
         </div>
       </div>
     </section>
