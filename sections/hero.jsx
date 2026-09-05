@@ -5,7 +5,13 @@ const HERO_PROOFS = [
   { icon: 'sparkles', label: 'AI', detail: { ko: 'AI로 더 빠르게 문제 해결', en: 'Use AI to solve faster' }, position: 'proof-d' },
 ];
 
-const HERO_STAT_ICONS = ['layers', 'briefcase', 'globe', 'medal'];
+const HERO_STAT_ICONS = ['sparkles', 'briefcase', 'globe', 'medal'];
+const HERO_STAT_DESCRIPTIONS = [
+  { ko: '실제 사용자를 위한 서비스를 출시하고 운영했습니다.', en: 'Launched and operated a product for real users.' },
+  { ko: '다양한 스타트업과 협업하며 운영 문제를 해결했습니다.', en: 'Worked with startups to solve operating problems.' },
+  { ko: '파리 올림픽 현장에서 글로벌 경험을 쌓았습니다.', en: 'Built global operating experience at Paris 2024.' },
+  { ko: '브랜드와 파트너십을 구축해 실질적인 가치를 만들었습니다.', en: 'Built partnerships that created measurable value.' },
+];
 
 const Hero = () => {
   const { lang, t } = useLanguage();
@@ -27,9 +33,9 @@ const Hero = () => {
 
             <h1 className={lang === 'en' ? 'hero-title hero-title-en' : 'hero-title'}>
               <span className="hero-title-line">{heroTitle.line1}</span>
-              <span className="hero-title-line">
+              <span className={lang === 'ko' ? 'hero-title-line hero-second-line grad-text' : 'hero-title-line hero-second-line'}>
                 {heroTitle.prefix}
-                <span className="grad-text">{heroTitle.accent}</span>
+                {lang === 'ko' ? heroTitle.accent : <span className="grad-text">{heroTitle.accent}</span>}
                 {heroTitle.suffix}
               </span>
             </h1>
@@ -90,6 +96,7 @@ const Hero = () => {
                     <strong>{proof.label}</strong>
                     <small>{t(proof.detail)}</small>
                   </span>
+                  <Icon name="arrow-right" size={13} stroke={1.8} className="floating-proof-arrow" />
                 </div>
               ))}
             </div>
@@ -105,7 +112,7 @@ const Hero = () => {
               <div className="proof-strip-copy proof-strip-copy-strong">
                 <strong className="proof-stat-value">{stat.value}<span>{t(stat.suffix)}</span></strong>
                 <span className="proof-stat-label">{t(stat.label)}</span>
-                <small>{t(stat.sub)}</small>
+                <small>{t(HERO_STAT_DESCRIPTIONS[index])}</small>
               </div>
             </div>
           ))}
