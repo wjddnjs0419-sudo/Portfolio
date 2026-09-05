@@ -48,7 +48,7 @@ const ProjectVisualCollage = ({ project }) => {
         <div className="laptop-screen">
           <div className="browser-bar"><span /><span /><span /><em>ncf-aroundx.com</em></div>
           {liveHomepage && (
-            <iframe src={liveHomepage.src} title={t(liveHomepage.label)} loading="lazy" referrerPolicy="strict-origin-when-cross-origin" />
+            <iframe src={liveHomepage.src} title={t(liveHomepage.label)} loading="eager" referrerPolicy="strict-origin-when-cross-origin" />
           )}
           <div className="live-homepage-badge"><span className="project-live-dot" />{t({ ko: 'LIVE 메인 페이지', en: 'LIVE homepage' })}</div>
         </div>
