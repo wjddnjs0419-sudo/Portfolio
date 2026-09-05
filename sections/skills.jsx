@@ -12,6 +12,10 @@ const SkillsSection = () => {
   const { t } = useLanguage();
   const allSkillItems = [...SKILLS.flatMap((skill) => skill.items), ...PROJECTS.flatMap((project) => project.badges || [])];
   const tools = TOOL_ORDER.filter((tool) => allSkillItems.includes(tool));
+  const capabilityTitle = t({
+    ko: { line1: '문제를 발견하는 것에서', line2: '해결하는 것까지,', accent: '폭넓게 연결합니다.' },
+    en: { line1: 'From finding problems', line2: 'to solving them,', accent: 'I connect the whole flow.' },
+  });
 
   return (
     <section id="skills" className="bg-fg-page skills-section">
@@ -19,10 +23,11 @@ const SkillsSection = () => {
         <div className="capabilities-intro reveal">
           <div>
             <div className="section-micro-title">{t({ ko: '역량 · CAPABILITIES', en: 'CAPABILITIES' })}</div>
-            <h2>{t({
-              ko: '문제를 발견하는 것에서\n해결하는 것까지,\n폭넓게 연결합니다.',
-              en: 'From finding problems\nto solving them,\nI connect the whole flow.',
-            })}</h2>
+            <h2>
+              <span>{capabilityTitle.line1}</span>
+              <span>{capabilityTitle.line2}</span>
+              <strong>{capabilityTitle.accent}</strong>
+            </h2>
           </div>
           <p>{t({
             ko: '기획, 운영, 기술, 커뮤니케이션을 아우르는 역량으로 아이디어를 실제 서비스와 임팩트로 전환합니다.',
