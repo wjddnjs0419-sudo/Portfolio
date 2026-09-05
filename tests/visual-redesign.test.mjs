@@ -18,6 +18,7 @@ assert.match(projects, /project-editorial/, 'Projects should use editorial case-
 assert.match(projects, /item\.type === 'iframe'/, 'Next Challenge should restore the live homepage iframe from project media');
 assert.match(projects, /<iframe/, 'Next Challenge should render the live homepage iframe');
 assert.match(projects, /controls/, 'Date-navi demo video should be an explicit playable demo, not decoration only');
+assert.match(projects, /poster="assets\/date-navi\/place-search\.png"/, 'Date-navi demo should show a real app screen before playback');
 
 assert.match(experience, /featured-experience/, 'Paris 2024 should render as the featured experience');
 assert.match(experience, /experience\.id === 'sports-events'/, 'Supporting experience should explicitly keep HUFS Marathon');
