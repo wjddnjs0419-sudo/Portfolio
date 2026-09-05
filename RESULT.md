@@ -1,39 +1,63 @@
 # RESULT.md — 세션 핸드오프
 
-> 이 파일은 최신 세션 결과만 유지합니다. 이전 세션 기록은 대화 컨텍스트 또는 메모리를 참조하세요.
-
----
-
-## 세션: 2026-06-10 — GitHub 연결 및 Vercel 공개 배포
+## 세션: 2026-09-05 — Portfolio Repositioning PRD v1.0 + Next Challenge 미디어 업데이트
 
 ### 요약
-새 GitHub 저장소 `wjddnjs0419-sudo/Portfolio`에 로컬 프로젝트를 Git 저장소로 초기화해 연결하고,
-`main` 브랜치에 커밋을 푸시했습니다.
-배포 측면에서는 루트 경로 공개를 위해 `index.html` 진입점을 추가했고,
-Vercel 기본 `vercel.app` 도메인에 걸려 있던 SSO 보호를 해제한 뒤
-Git 작성자 팀 접근 제한으로 `BLOCKED` 되던 배포를 Git 메타데이터 없는 임시 폴더 배포로 우회해 공개 배포를 완료했습니다.
-마지막으로 기본 프로젝트 alias를 `https://portfolio-jeongwon-kim-s-projects.vercel.app`로 연결해 공유용 주소를 정리했습니다.
 
-### 주요 작업
+기존 정적 React 포트폴리오의 Trust Blue 디자인, 데이터 기반 컴포넌트, 반응형 레이아웃, KO·EN 전환 구조를 유지하면서 Business · Product · AI · Global 포지셔닝으로 콘텐츠를 재편했습니다. Date-navi를 첫 번째 Featured Project로 추가하고, Figma `Reference Screens`의 실제 화면 2종과 사용자가 제공한 실제 코스 생성 MP4를 기존 `BrowserShowcase`에 연결했습니다. 이어 Next Challenge의 기존 이미지 3종을 사용자가 제공한 새 화면 3종으로 교체했습니다.
 
-| 작업 | 파일 | 내용 |
-|---|---|---|
-| Git 저장소 부트스트랩 | `.gitignore`, `README.md`, 전체 프로젝트 | `git init -b main`, `origin` 연결, 원격 초기 `README.md` 병합 후 `main` 푸시 |
-| 루트 진입 보강 | `index.html`, `Portfolio.html` | Vercel과 일반 정적 호스팅 모두에서 `/`로 열리도록 `index.html` 추가, 기존 `Portfolio.html` 진입 구조 유지 |
-| Vercel 설정 정리 | `vercel.json` 삭제 | 라우팅 우회 대신 정적 기본 엔트리(`index.html`)로 단순화 |
-| Vercel 접근 정책 수정 | Vercel 프로젝트 설정 | `ssoProtection` 비활성화로 기본 `vercel.app` 도메인 공개 접근 허용 |
-| 배포 우회 처리 | 임시 배포 디렉터리(`/tmp/portfolio-vercel-deploy`) | Git 작성자 메타데이터로 인해 `readyState=BLOCKED` 되던 문제를 Git 메타데이터 없는 임시 디렉터리 배포로 해결 |
-| 공개 alias 정리 | Vercel alias | 읽기 쉬운 공유 주소 `portfolio-jeongwon-kim-s-projects.vercel.app`를 최신 프로덕션 배포에 연결 |
-| 계획/핸드오프 정리 | `PLAN.md`, `RESULT.md` | 배포 결과와 검증 내역 최신화 |
+### 주요 변경
+
+| 파일 | 내용 |
+|---|---|
+| `data.jsx` | Hero/Profile/섹션 카피, Stats, Date-navi Featured Project, Next Challenge, Experience 4종, Skills 5그룹, Languages를 PRD 기준으로 갱신; 코스 생성 동영상 미디어 연결 |
+| `sections/ui.jsx` | 기존 이미지/iframe 분기에 실제 `<video>` 렌더링을 추가하고, Headline의 섹션별 설명 폭 커스터마이즈 지원 |
+| `sections/experience.jsx` | 배경 이미지가 없는 NCF·NEOMA 카드의 조건부 렌더링 유지; Experience 제목을 의미 단위 2줄로 분리하고 데스크톱 설명을 한 줄로 표시 |
+| `sections/skills.jsx` | 기존 SVG 아이콘으로 5개 Skills 그룹 매핑 |
+| `assets/date-navi/home.png` | Figma `Reference Screens` Home 프레임 `67:202` export |
+| `assets/date-navi/recommendation-result.png` | Figma Recommendation Result 프레임 `304:909` export |
+| `assets/date-navi/Course generate video.mp4` | 사용자가 제공한 실제 코스 생성 동영상 |
+| `assets/next-challenge-admin.png` | 사용자 제공 이미지 1 — Next Challenge 관리자 페이지 화면 |
+| `assets/next-challenge-automation.png` | 사용자 제공 이미지 2 — 반복 업무 자동화 |
+| `assets/next-challenge-figma-ui.png` | 사용자 제공 이미지 3 — Figma 기반 랜딩페이지/UI 설계 |
+| `.gitignore` | Vercel 연결 과정에서 `.env*` 로컬 환경 파일 ignore 추가 |
+| `PLAN.md` | 작업을 Done으로 이동 |
+
+### 포지셔닝 결과
+
+- Hero 메시지를 “문제를 발견하고, 서비스로 직접 구현합니다.” / “I find problems and turn them into products.”로 정리했습니다.
+- Date-navi는 문제 정의 → 추천 파이프라인 → 반복 개선 → 출시·운영까지 설명하는 첫 프로젝트로 배치했습니다.
+- Next Challenge 미디어 탭을 관리자 페이지 화면, 반복 업무 자동화, Figma 기반 랜딩페이지/UI 설계로 교체했습니다.
+- Next Challenge는 Growth/Marketing이 아닌 Business Operations · Digital Product · Automation 사례로 재작성했습니다.
+- Experience는 NCF → Paris 2024 → HUFS Marathon → NEOMA 순으로 정리했습니다.
+- Skills는 Product, AI, Data/Tech, Design, Business 5그룹으로 확장했습니다.
+- L’Oréal은 핵심 Experience에서 제외하고 확인 가능한 Brandstorm 2025 한국 준결승 사실만 Skills 하이라이트에 유지했습니다.
+- Veggie Korea, 확인되지 않은 사용자 수·매출·KPI·언어 자격은 추가하지 않았습니다.
 
 ### 검증
-- [x] `git push origin main` 성공 확인
-- [x] GitHub 원격 HEAD 기준 최신 커밋 `93a65bc` 반영 확인
-- [x] `npx vercel project protection portfolio --format json`으로 `ssoProtection: null` 확인
-- [x] `npx vercel api /v13/deployments/dpl_78oZ3szk3oFVzqGt1nzkAcm6ja9Q`로 `readyStateReason`이 Git 작성자 팀 접근 제한임을 확인
-- [x] Git 메타데이터 없는 임시 폴더 배포 후 `readyState: READY` 확인
-- [x] `curl -I -L https://portfolio-jeongwon-kim-s-projects.vercel.app`로 루트 `/`의 `200 OK` 확인
-- [x] `curl -I -L https://portfolio-theta-wine-zwpo81oq1i.vercel.app/Portfolio.html`로 기존 엔트리도 `200 OK` 확인
 
-### 잔여 과제
-- GitHub 저장소를 Vercel 프로젝트에 자동 배포로 완전히 연결하려면, Vercel 계정에 GitHub Login Connection을 추가해야 함
+- [x] `node --check - < data.jsx` 성공; 변경 JSX는 브라우저 Babel transpile/render 성공
+- [x] `git diff --check` 성공
+- [x] `Portfolio.html`, `index.html`, Date-navi PNG 2종·MP4, Next Challenge PNG 3종 HTTP 200 확인
+- [x] KO·EN 전환 및 영문 Hero/Date-navi/App Store/French Intermediate 렌더링 확인
+- [x] 코스 생성 영상 탭에서 실제 `<video>`가 로드되고 재생 중임을 확인: `readyState=4`, `25.46s`, `354×720`
+- [x] 홈·AI 추천 결과 이미지와 코스 생성 영상 탭 전환 확인
+- [x] Next Challenge 미디어 3종과 새 제목이 각각 렌더링되는지 확인
+- [x] Experience 제목이 1280px에서 2줄, 설명이 1줄로 렌더링되고 375px에서 자연스럽게 줄바꿈되는지 확인
+- [x] 기존 `admin-page.png`, `design-system.png`, `poster.png` 삭제 및 참조 제거 확인
+- [x] 1280px 데스크톱, 768px 태블릿, 375px 모바일에서 가로 overflow 없음
+- [x] 375px 모바일 메뉴 열기 및 Work·Experience·Skills·Contact 항목 확인
+- [x] 브라우저 런타임 오류 없음. 기존 CDN 사용에 따른 Tailwind/Babel production warning만 존재
+
+### Vercel 배포
+
+- 프로젝트: `jeongwon-kim-s-projects/portfolio`
+- 배포 상태: `READY` / `production`
+- 최근 배포 URL: [portfolio-dw9yyv6xg-jeongwon-kim-s-projects.vercel.app](https://portfolio-dw9yyv6xg-jeongwon-kim-s-projects.vercel.app)
+- production alias: [portfolio-theta-wine-zwpo81oq1i.vercel.app](https://portfolio-theta-wine-zwpo81oq1i.vercel.app)
+- Inspect: [Vercel deployment](https://vercel.com/jeongwon-kim-s-projects/portfolio/GPSizEWcaarYv1a2Ev1obgA2JoVp)
+- [x] 두 URL에서 `Portfolio.html`, 새 PNG 3종, Date-navi MP4 응답 확인
+
+### 미해결
+
+없음. 로컬 미리보기는 [Portfolio.html](http://localhost:8080/Portfolio.html)에서 확인할 수 있습니다.

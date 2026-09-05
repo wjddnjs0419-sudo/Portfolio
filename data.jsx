@@ -6,20 +6,20 @@ const PROFILE = {
     en: 'Available from 2026.06',
   },
   location: {
-    ko: '서울 · 디지털 마케팅 / 그로스 포지션 오픈',
-    en: 'Seoul · Open to Digital Marketing / Growth roles',
+    ko: '서울 · 사업기획 / 서비스기획 / 글로벌사업 / AI·디지털',
+    en: 'Seoul · Open to Business, Product, Global & AI Strategy roles',
   },
   heroLocation: {
     ko: 'Seoul, KR · 2026.06부터 근무 가능',
     en: 'Seoul, KR · Available from 2026.06',
   },
   roleFocus: {
-    ko: '브랜드 · 퍼포먼스 · 이커머스',
-    en: 'Brand · Performance · eCommerce',
+    ko: '사업기획 · 서비스기획 · 글로벌사업 · AI/디지털',
+    en: 'Business · Product · AI · Global',
   },
   strengths: {
-    ko: 'AI · 자동화 · 글로벌',
-    en: 'AI · Automation · Global',
+    ko: '문제 발견 · 서비스 구현 · 운영 자동화',
+    en: 'Problem discovery · Product execution · Operations automation',
   },
   email: 'jake051096@gmail.com',
   phone: '010-6303-4479',
@@ -47,30 +47,30 @@ const COPY = {
   },
   hero: {
     eyebrow: {
-      ko: 'Digital · Growth · Global',
-      en: 'Digital · Growth · Global',
+      ko: 'Business · Product · AI · Global',
+      en: 'Business · Product · AI · Global',
     },
     title: {
       ko: {
-        line1: '전략부터 자동화까지',
-        prefix: '직접 실행하는 ',
-        accent: '마케터',
+        line1: '문제를 발견하고,',
+        prefix: '서비스로 직접 ',
+        accent: '구현합니다',
         suffix: '.',
       },
       en: {
-        line1: 'From strategy to automation.',
-        prefix: 'A ',
-        accent: 'marketer',
-        suffix: ' who actually builds.',
+        line1: 'I find problems',
+        prefix: 'and turn them into ',
+        accent: 'products',
+        suffix: '.',
       },
     },
     keywords: [
+      { ko: '#문제발견', en: '#ProblemDiscovery' },
+      { ko: '#Product', en: '#Product' },
+      { ko: '#AI', en: '#AI' },
       { ko: '#실행', en: '#Execution' },
-      { ko: '#열정', en: '#Drive' },
-      { ko: '#소통', en: '#Communication' },
-      { ko: '#빠른 적응력', en: '#FastLearner' },
-      { ko: '#스포츠', en: '#Sports' },
-      { ko: '#언어', en: '#Languages' },
+      { ko: '#운영', en: '#Operations' },
+      { ko: '#피드백', en: '#Feedback' },
       { ko: '#글로벌', en: '#Global' },
     ],
     workCta: { ko: '프로젝트 살펴보기', en: 'View work' },
@@ -94,8 +94,8 @@ const COPY = {
         en: 'I am deeply curious,\nand I genuinely enjoy learning new things.',
       },
       {
-        ko: '요즘은 러닝·커피·요리·언어 공부에\n빠져 있는데, 돌아보면 그 호기심이\n스포츠에서 마케팅까지\n이어진 것 같아요.',
-        en: 'Lately I have been into running, coffee, cooking, and language study,\nand looking back, that same curiosity is what carried me\nfrom sports into marketing.',
+        ko: '요즘은 러닝·커피·요리·언어 공부에\n빠져 있어요. 돌아보면 그 호기심이\n스포츠 현장, 글로벌 운영,\n서비스 기획으로 이어졌습니다.',
+        en: 'Lately I have been into running, coffee, cooking, and language study,\nand looking back, that curiosity has taken me\nfrom sports and global operations\nto product planning.',
       },
       {
         ko: '여러분은 무엇을 좋아하시나요?\n김정원',
@@ -123,36 +123,36 @@ const COPY = {
   },
   sections: {
     projects: {
-      eyebrow: { ko: '주요 프로젝트 · 2026', en: 'Featured Work · 2026' },
+      eyebrow: { ko: '주요 프로젝트 · Product in Practice', en: 'Featured Work · Product in Practice' },
       title: {
-        ko: 'MarTech & Growth — 직접 만든 운영 시스템.',
-        en: 'MarTech & Growth — systems I built to run marketing better.',
+        ko: 'Business · Product · AI — 아이디어를 실제 서비스와 시스템으로.',
+        en: 'Business · Product · AI — from ideas to products and operating systems.',
       },
       sub: {
-        ko: '마케터가 직접 코드와 AI를 다뤄, 손이 가는 운영을 시스템으로 바꾼 케이스.',
-        en: 'A case where a marketer used code and AI directly to turn manual operations into scalable systems.',
+        ko: '사용자 문제를 발견하고, 서비스 흐름과 운영 시스템으로 구현한 프로젝트.',
+        en: 'Projects where I discovered user problems and turned them into product flows and operating systems.',
       },
     },
     experience: {
       eyebrow: { ko: '경험', en: 'Experience' },
       title: {
-        ko: 'Brand · Global · Sports — 다양한 결의 현장 경험.',
-        en: 'Brand · Global · Sports — field experience across different arenas.',
+        ko: 'Global · Operations · Business — 다양한 환경에서 문제를 구조화하다.',
+        en: 'Global · Operations · Business — structuring problems across different environments.',
       },
       sub: {
-        ko: '가장 최근의 일로부터 거꾸로 적었습니다. 글로벌 무대, 비즈니스 컴피티션, 스포츠 산업 현장까지 — 마케터의 시야를 넓혀준 경험들.',
-        en: 'Listed in reverse chronological order, these experiences span global events, business competitions, and sports industry projects that expanded my perspective as a marketer.',
+        ko: '프로그램 운영, 글로벌 고객 경험, 사업개발과 국제 협업까지 — 문제를 구조화하고 실행한 경험들입니다.',
+        en: 'From program operations and global customer experience to business development and cross-cultural collaboration.',
       },
     },
     skills: {
       eyebrow: { ko: '역량 · 도구', en: 'Skills · Tooling' },
       title: {
-        ko: 'Brand부터 Performance까지, 풀퍼널을 다루는 도구.',
-        en: 'Tools that cover the full funnel, from brand to performance.',
+        ko: '문제를 정의하고, 서비스와 운영을 설계하는 도구.',
+        en: 'Tools for defining problems and designing products and operations.',
       },
       sub: {
-        ko: '마케팅 · 이커머스 현장에서 직접 결과를 낸 도구만 적었습니다.',
-        en: 'Only the tools I have actually used to drive results in marketing and eCommerce are included.',
+        ko: '기획부터 구현·운영·개선까지 직접 연결해본 역량입니다.',
+        en: 'Capabilities connecting planning, implementation, operations, and iteration.',
       },
       languagesTitle: { ko: '언어', en: 'Languages' },
       highlightsTitle: { ko: '하이라이트', en: 'Highlights' },
@@ -162,20 +162,20 @@ const COPY = {
           en: "L'Oréal Brandstorm 2025 <b class=\"text-fg\">Semi-Finalist</b>",
         },
         {
-          ko: 'Paris 2024 Olympics — Korea House <b class="text-fg">VIP 운영</b>',
-          en: 'Paris 2024 Olympics — Korea House <b class="text-fg">VIP Operations</b>',
+          ko: 'Date-navi <b class="text-fg">App Store 정식 출시</b>',
+          en: 'Date-navi <b class="text-fg">Released on the App Store</b>',
         },
         {
-          ko: '한국어 <b class="text-fg">원어민</b> · 영어 <b class="text-fg">C1</b> · 프랑스어 <b class="text-fg">B2</b> — 3개 국어 커뮤니케이션',
-          en: 'Korean <b class="text-fg">Native</b> · English <b class="text-fg">C1</b> · French <b class="text-fg">B2</b> — trilingual communication',
+          ko: '한국어 <b class="text-fg">원어민</b> · 영어 <b class="text-fg">비즈니스 실무</b> · 프랑스어 <b class="text-fg">중급</b> — 글로벌 커뮤니케이션',
+          en: 'Korean <b class="text-fg">Native</b> · English <b class="text-fg">Business level</b> · French <b class="text-fg">Intermediate</b> — global communication',
         },
       ],
     },
     contact: {
       eyebrow: { ko: '함께 이야기해요', en: "Let's Talk" },
       title: {
-        ko: '마케팅·커머스가 데이터와\n만나는 자리에서.',
-        en: 'Where marketing and commerce\nmeet data.',
+        ko: '사업과 기술이\n서비스로 만나는 자리에서.',
+        en: 'Where business and technology\nmeet in real products.',
       },
       sub: {
         ko: '연락 환영합니다. 보통 <b class="text-fg">24시간 이내</b> 회신드립니다.',
@@ -183,8 +183,8 @@ const COPY = {
       },
       statusLabel: { ko: '상태', en: 'Status' },
       statusValue: {
-        ko: '마케팅 / 이커머스 포지션 오픈',
-        en: 'Open to Marketing / eCommerce roles',
+        ko: '사업기획 · 서비스기획 · 글로벌사업 · AI/디지털 포지션 오픈',
+        en: 'Open to Business, Product, Global & AI Strategy roles',
       },
       availability: {
         ko: '정규직 시작 가능:',
@@ -210,111 +210,194 @@ const COPY = {
 
 const STATS = [
   {
-    value: '100',
-    suffix: { ko: '%', en: '%' },
-    label: { ko: '콘텐츠 운영 자동화', en: 'Content ops automated' },
-    sub: {
-      ko: '파이프라인 직접 구축 · 운영 공수 제로',
-      en: 'Built the pipeline myself · reduced manual ops to zero',
-    },
+    value: 'App',
+    suffix: { ko: ' Store', en: ' Store' },
+    label: { ko: '정식 출시', en: 'Released' },
+    sub: { ko: 'Date-navi', en: 'Date-navi' },
+    compact: true,
   },
   {
-    value: 'Top',
-    suffix: { ko: '8', en: '8' },
-    label: { ko: "L'Oréal Brandstorm", en: "L'Oréal Brandstorm" },
-    sub: { ko: 'Semi-Finalist · 2025', en: 'Semi-Finalist · 2025' },
+    value: '100',
+    suffix: { ko: '+', en: '+' },
+    label: { ko: '스타트업', en: 'Startups' },
+    sub: { ko: '프로그램 운영', en: 'Program Operations' },
   },
   {
     value: 'Paris',
     suffix: { ko: ' 24', en: ' 24' },
-    label: { ko: 'Olympics · Korea House', en: 'Olympics · Korea House' },
-    sub: { ko: 'VIP Lounge Operations', en: 'VIP Lounge Operations' },
+    label: { ko: 'Olympics', en: 'Olympics' },
+    sub: { ko: 'Global Operations', en: 'Global Operations' },
   },
   {
-    value: '3',
-    suffix: { ko: '개국어', en: 'Languages' },
-    label: { ko: '글로벌 캠페인 역량', en: 'Global campaign readiness' },
-    sub: {
-      ko: 'Korean Native · English C1 · French B2',
-      en: 'Korean Native · English C1 · French B2',
-    },
-    compact: true,
+    value: '5',
+    suffix: { ko: '', en: '' },
+    label: { ko: '스폰서', en: 'Sponsors' },
+    sub: { ko: 'HUFS Marathon · 약 300만 원 후원', en: 'HUFS Marathon · KRW 3M sponsorship' },
   },
 ];
 
 const PROJECTS = [
   {
-    id: 'next-challenge',
-    tag: 'MarTech / Growth Ops',
-    period: '2026.04 — Present',
-    org: 'Next Challenge — Global HQ',
-    role: 'Growth Operations Intern',
+    id: 'date-navi',
+    tag: 'AI Product / Service Planning',
+    period: '2026',
+    org: 'Date-navi',
+    role: 'Product Planning · UX · AI Recommendation · Development · Operations',
     title: {
-      ko: '구글플레이 창구 8기 — 콘텐츠 · 채널 운영 자동화',
-      en: 'Google Play ChangGoo 8th Cohort — content and channel ops automation',
+      ko: '데이트 계획의 반복 검색을 하나의 추천 흐름으로 바꾸다.',
+      en: 'Turning repeated date-planning searches into one recommendation flow.',
     },
     headline: {
-      ko: '"운영 자동화로 실행 속도를 끌어올린 Growth Ops 마케터"',
-      en: '"A Growth Ops marketer who increased execution speed through automation."',
+      ko: '"사용자 의도를 구조화해 실제 코스로 연결한 AI Product"',
+      en: '"An AI product that structures user intent into an actual date course."',
     },
     summary: {
-      ko: '구글플레이 창구 프로그램 공식 채널의 콘텐츠 파이프라인과 100여 개 스타트업 DB를 직접 자동화한 프로젝트. 마케터가 직접 코드와 AI를 다뤄, 운영 시간을 콘텐츠 기획 시간으로 전환한 케이스.',
-      en: 'A project where I automated the content pipeline for the official Google Play ChangGoo channels and a startup database of 100+ companies. It shows how a marketer can use code and AI directly to shift time from manual operations to content planning.',
+      ko: '데이트할 때마다 장소를 검색하고 후보를 비교한 뒤 코스로 조합해야 하는 불편에서 시작했습니다. 지역·날짜/시간·활동·분위기·카테고리·키워드를 입력하면 AI와 장소 검색 데이터를 활용해 여러 장소를 하나의 데이트 코스로 추천하는 iOS 앱을 직접 기획하고 출시했습니다.',
+      en: 'The idea started with the repeated effort of searching for places, comparing candidates, and assembling a date course each time. I planned and released an iOS app that uses AI and place-search data to recommend a multi-stop date course from a user’s region, date and time, activities, mood, categories, and keywords.',
     },
     sections: [
       {
         h: {
-          ko: 'Channel Automation — 네이버 블로그 → 공식 채널 실시간 연동',
-          en: 'Channel Automation — real-time sync from Naver Blog to official channels',
+          ko: 'Problem · Solution — 데이트 계획을 하나의 흐름으로',
+          en: 'Problem · Solution — one flow for date planning',
         },
         body: [
           {
-            ko: 'API · 크롤링 파이프라인을 직접 설계해 블로그 콘텐츠가 공식 게시판에 자동 배포되도록 구축',
-            en: 'Designed the API and crawling pipeline myself so blog content could be published automatically to the official board.',
+            ko: '장소 검색, 후보 비교, 이동 순서 결정, 코스 구성을 각각 해야 하는 반복적인 불편에서 문제를 정의',
+            en: 'Defined the problem as the repeated effort of searching, comparing candidates, deciding the order, and assembling a course separately.',
           },
           {
-            ko: '<b>수동 업로드 100% 제거</b> → 콘텐츠 도달 속도와 운영 효율을 동시에 개선',
-            en: '<b>Eliminated manual uploads by 100%</b> to improve both content speed and operating efficiency.',
+            ko: '사용자가 지역·날짜/시간·활동·분위기·카테고리·키워드를 입력하면 여러 장소를 하나의 데이트 코스로 연결',
+            en: 'Connected multiple places into one date course from the user’s region, date and time, activities, mood, categories, and keywords.',
           },
           {
-            ko: '프론트엔드와 백엔드 DB 동시 설계로, 마케터가 콘텐츠 흐름 전체를 통제',
-            en: 'Structured both the frontend and backend database so the entire content flow could be controlled end to end by marketing.',
+            ko: '단순 장소 추천이 아니라 데이트 계획 전체를 하나의 제품 흐름으로 설계',
+            en: 'Designed the full date-planning journey as one product flow rather than a simple place recommendation.',
           },
         ],
       },
       {
         h: {
-          ko: 'AI · Workflow Automation',
-          en: 'AI · Workflow Automation',
+          ko: 'Recommendation Design — AI 판단을 단계별로 관리',
+          en: 'Recommendation Design — managing AI decisions in stages',
         },
         body: [
           {
-            ko: 'AI 기반 데이터 분류 · 텍스트 자동 정제로 <b>100여 개 스타트업 DB</b> 운영 최적화',
-            en: 'Optimized a <b>100+ startup database</b> with AI-based classification and automated text cleanup.',
+            ko: '사용자 의도 구조화 → 검색 후보 생성 → 장소 데이터 수집 → 중복 제거 → 필수 조건 확인 → 품질 평가 → 최종 랭킹 단계로 추천 품질을 관리',
+            en: 'Managed recommendation quality through intent structuring → candidate generation → place data collection → duplicate removal → eligibility checks → quality evaluation → final ranking.',
           },
           {
-            ko: '프롬프트 엔지니어링으로 카피·리스트 생성 자동화 스크립트 작성',
-            en: 'Wrote prompt-driven automation scripts for generating copy and operational lists.',
-          },
-          {
-            ko: 'CRM · 캠페인 데이터 정제 시간을 크게 단축',
-            en: 'Cut the time needed to clean CRM and campaign data significantly.',
+            ko: '사용자 입력을 그대로 AI에 전달하지 않고, 각 단계의 판단 기준과 결과를 분리해 검증 가능한 구조로 설계',
+            en: 'Instead of passing raw input directly to AI, separated each stage’s decision criteria and output into a structure that could be checked.',
           },
         ],
       },
       {
         h: {
-          ko: 'Brand · Content Operations',
-          en: 'Brand · Content Operations',
+          ko: 'Iteration · Outcome — 피드백에서 출시 후 개선까지',
+          en: 'Iteration · Outcome — from feedback to post-launch iteration',
         },
         body: [
           {
-            ko: 'Figma 기반 콘텐츠·랜딩 페이지 UI 정리, 100여 개 선정 기업 비즈니스 DB 체계화',
-            en: 'Organized content and landing page UI in Figma while structuring a business database for 100+ selected companies.',
+            ko: '초기 사용자 테스트에서 특정 키워드 과반영, 프랜차이즈 반복, 의도와 맞지 않는 장소, 추천 결과 생성 속도 문제를 확인',
+            en: 'Early user tests revealed over-weighted keywords, repeated franchise recommendations, irrelevant places, and slow recommendation generation.',
           },
           {
-            ko: '브랜드 톤 · 콘텐츠 가이드 정립으로 외부 노출 일관성 확보',
-            en: 'Established brand tone and content guidelines to keep external communication consistent.',
+            ko: '추천 단계를 분리하고 단계별 실패 원인을 확인할 수 있도록 구조를 개선',
+            en: 'Improved the structure by separating recommendation stages so the cause of failure could be identified at each step.',
+          },
+          {
+            ko: '<b>추천 로딩 속도 약 2~3초 → 0.3~0.6초</b> 수준으로 개선하고, <b>App Store 정식 출시</b> 및 Kakao Map 기반 장소 확인 기능 구현',
+            en: 'Improved <b>recommendation loading from roughly 2–3 seconds to 0.3–0.6 seconds</b>, then <b>released on the App Store</b> with Kakao Map-based place verification.',
+          },
+        ],
+      },
+    ],
+    media: [
+      { type: 'img', src: 'assets/date-navi/home.png', label: { ko: '홈 화면', en: 'Home screen' } },
+      { type: 'video', src: 'assets/date-navi/Course generate video.mp4', label: { ko: '코스 생성 영상', en: 'Course generation video' } },
+      { type: 'img', src: 'assets/date-navi/recommendation-result.png', label: { ko: 'AI 추천 결과', en: 'AI recommendation result' } },
+    ],
+    badges: ['Product Planning', 'AI Service Design', 'UX', 'Recommendation Logic', 'React Native · Expo', 'Supabase', 'Kakao Map'],
+    metrics: [
+      { v: 'App Store', l: { ko: '정식 출시', en: 'Official release' } },
+      { v: '0.3–0.6s', l: { ko: '추천 로딩 속도', en: 'Recommendation loading' } },
+      { v: 'Kakao Map', l: { ko: '장소 확인 기능', en: 'Place verification' } },
+    ],
+    accent: 'from-trust to-trustdark',
+  },
+  {
+    id: 'next-challenge',
+    tag: 'Business Operations / Digital Product',
+    period: '2026.04 — Present',
+    org: 'Next Challenge — Global HQ',
+    role: 'Business Operations · Digital Operations',
+    title: {
+      ko: '100개 스타트업 프로그램 운영을 하나의 디지털 시스템으로',
+      en: 'Turning a 100-startup program into one digital operating system',
+    },
+    headline: {
+      ko: '"흩어진 프로그램 운영을 하나의 디지털 시스템으로 만든 운영 기획"',
+      en: '"A digital operations planner who connected a fragmented program into one system."',
+    },
+    summary: {
+      ko: '약 100개 스타트업이 참여하는 구글플레이 창구 프로그램의 웹서비스, DB, 콘텐츠, 운영 흐름을 구축하고 반복 업무를 자동화한 프로젝트. 운영 문제를 발견하고 디지털 시스템으로 연결한 케이스.',
+      en: 'A project that built the web service, database, content, and operating flows for a Google Play ChangGoo program serving around 100 startups, while automating repetitive work. It connects operational problems to a digital system.',
+    },
+    sections: [
+      {
+        h: {
+          ko: 'Program System — 웹서비스와 운영 흐름 구축',
+          en: 'Program System — building the service and operating flows',
+        },
+        body: [
+          {
+            ko: '프로그램 정보·신청·공지·자료·Q&A를 관리하는 공식 웹서비스 기획·개발·운영',
+            en: 'Planned, developed, and operated the official web service for program information, applications, notices, resources, and Q&A.',
+          },
+          {
+            ko: '약 100개 스타트업의 정보를 한곳에서 관리할 수 있도록 운영 DB와 정보 구조 설계',
+            en: 'Designed the operating database and information structure to manage around 100 startups in one place.',
+          },
+          {
+            ko: '프로그램 참여자와 운영 담당자가 같은 정보를 기준으로 움직일 수 있도록 흐름 정리',
+            en: 'Organized the flows so program participants and operators could work from the same source of information.',
+          },
+        ],
+      },
+      {
+        h: {
+          ko: 'Data & Automation — 반복 업무를 줄이는 운영 구조',
+          en: 'Data & Automation — reducing repetitive operations',
+        },
+        body: [
+          {
+            ko: '뉴스 모니터링 자동화와 AI 기반 데이터 분류·텍스트 정제로 운영 데이터 관리 개선',
+            en: 'Improved operational data management through automated news monitoring, AI classification, and text cleanup.',
+          },
+          {
+            ko: '프롬프트 기반 자동화 스크립트로 반복적인 카피·리스트 생성 업무 단순화',
+            en: 'Simplified repetitive copy and list generation with prompt-driven automation scripts.',
+          },
+          {
+            ko: '운영 담당자가 수작업보다 기획과 의사결정에 집중할 수 있도록 업무 흐름 개선',
+            en: 'Improved the workflow so operators could spend more time on planning and decisions than manual work.',
+          },
+        ],
+      },
+      {
+        h: {
+          ko: 'Information Operations — 콘텐츠와 기업 정보의 일관성',
+          en: 'Information Operations — consistent content and company data',
+        },
+        body: [
+          {
+            ko: 'Figma 기반 콘텐츠·랜딩 페이지 UI 정리와 프로그램 정보 구조 개선',
+            en: 'Organized content and landing-page UI in Figma while improving the program information structure.',
+          },
+          {
+            ko: '선정 기업 비즈니스 DB를 체계화하고 외부 커뮤니케이션의 기준 정리',
+            en: 'Structured the selected companies’ business database and established standards for external communication.',
           },
         ],
       },
@@ -322,15 +405,15 @@ const PROJECTS = [
     url: 'https://ncf-aroundx.com/',
     media: [
       { type: 'iframe', src: 'https://ncf-aroundx.com/', label: { ko: '홈페이지', en: 'Website' } },
-      { type: 'img', src: 'assets/admin-page.png', label: { ko: '관리자 페이지', en: 'Admin page' } },
-      { type: 'img', src: 'assets/design-system.png', label: { ko: '디자인 시스템', en: 'Design system' } },
-      { type: 'img', src: 'assets/poster.png', label: { ko: '키비주얼 포스터', en: 'Key visual poster' } },
+      { type: 'img', src: 'assets/next-challenge-admin.png', label: { ko: '관리자 페이지 화면', en: 'Admin panel screen' } },
+      { type: 'img', src: 'assets/next-challenge-automation.png', label: { ko: '반복 업무 자동화', en: 'Repetitive work automation' } },
+      { type: 'img', src: 'assets/next-challenge-figma-ui.png', label: { ko: 'Figma 기반 랜딩페이지/UI 설계', en: 'Figma-based landing page / UI design' } },
     ],
-    badges: ['Marketing Automation', 'Content Ops', 'AI / LLM', 'CRM Data', 'Python · API', 'Figma'],
+    badges: ['Business Operations', 'Service Planning', 'Digital Ops', 'Automation', 'AI / LLM', 'Data Management'],
     metrics: [
-      { v: '100%', l: { ko: '수동 업로드 제거', en: 'Manual uploads removed' } },
-      { v: '100+', l: { ko: '스타트업 CRM DB', en: 'Startup CRM records' } },
-      { v: 'Full-Stack', l: { ko: 'Front · Back · AI', en: 'Front · Back · AI' } },
+      { v: '100+', l: { ko: '스타트업 운영 DB', en: 'Startup operations records' } },
+      { v: 'Web + DB', l: { ko: '프로그램 운영 시스템', en: 'Program operating system' } },
+      { v: 'Automation', l: { ko: '반복 업무 개선', en: 'Repetitive work improved' } },
     ],
     accent: 'from-trust to-trustdark',
   },
@@ -338,68 +421,68 @@ const PROJECTS = [
 
 const EXPERIENCES = [
   {
-    id: 'loreal-brandstorm',
-    tag: 'Brand / GTM',
-    period: '2025',
-    org: "L'Oréal Brandstorm 2025",
-    role: 'Global Innovation Competition · Semi-Finalist',
+    id: 'next-challenge',
+    tag: 'Business Operations · Automation',
+    period: '2026.04 — Present',
+    org: 'Next Challenge — Global HQ',
+    role: 'Business Operations · Digital Operations',
     title: {
-      ko: "Z세대 남성을 위한 '일회용 틴트 립밤' GTM 전략",
-      en: "GTM strategy for a disposable tinted lip balm designed for Gen Z men",
+      ko: '100개 스타트업 프로그램의 웹서비스·DB·운영 흐름 구축',
+      en: 'Built the web service, database, and operating flows for a 100-startup program',
     },
     bullets: [
       {
-        ko: 'Z세대 남성 입문자 타겟 위생 소포장 신제품 컨셉 · 페르소나 설계',
-        en: 'Built the product concept and persona around hygienic single-use packaging for first-time Gen Z male users.',
+        ko: '약 100개 스타트업 대상 프로그램의 공식 웹서비스 기획·개발·운영',
+        en: 'Planned, developed, and operated the official web service for a program serving around 100 startups.',
       },
       {
-        ko: '틱톡 기반 <b>#FirstLipBalmChallenge</b> 숏폼 바이럴 캠페인 기획',
-        en: 'Planned a TikTok-led short-form viral campaign around <b>#FirstLipBalmChallenge</b>.',
+        ko: '프로그램 정보·신청·공지·자료·Q&A와 스타트업 DB 관리',
+        en: 'Managed program information, applications, notices, resources, Q&A, and the startup database.',
       },
       {
-        ko: '편의점 · 올리브영 · 무신사 등 O2O 채널 믹스 최적화 전략 제시',
-        en: 'Proposed an optimized O2O channel mix spanning convenience stores, Olive Young, and Musinsa.',
+        ko: '뉴스 모니터링과 반복적인 데이터·콘텐츠 운영 업무 자동화',
+        en: 'Automated news monitoring and repetitive data and content operations.',
       },
       {
-        ko: '<b>국내 준결승 진출 (Semi-Finalist)</b> · 스포츠 산업 전공 인사이트를 뷰티에 접목',
-        en: '<b>Reached the Korean semi-final</b> by applying sports-industry insight to beauty.',
+        ko: '운영 문제를 정보 구조와 디지털 시스템으로 연결한 경험',
+        en: 'Connected operational problems to information structures and digital systems.',
       },
     ],
-    badges: ['GTM', 'Brand Campaign', 'TikTok Short-form', 'O2O', 'Z-Gen'],
+    badges: ['Business Operations', 'Digital Ops', 'Automation', 'Service Planning'],
   },
   {
     id: 'paris-2024',
-    tag: 'Global · Brand Experience',
+    tag: 'Global Customer Experience · Event Operations',
     period: '2024.07 — 2024.08',
     org: 'Paris 2024 Olympics · Korea House',
     role: 'VIP Lounge Operations Coordinator',
     title: {
-      ko: 'Korea House VIP Lounge — 글로벌 브랜드 익스피리언스 운영',
-      en: 'Korea House VIP Lounge — operating a global brand experience',
+      ko: 'Korea House VIP Lounge — 글로벌 고객 경험과 현장 운영',
+      en: 'Korea House VIP Lounge — global customer experience and event operations',
     },
     bullets: [
       {
-        ko: '국제 스포츠 기구 관계자 · 국가대표 선수단 VIP 라운지 운영',
-        en: 'Supported VIP lounge operations for international sports officials and national athletes.',
+        ko: 'Korea House VIP Lounge에서 다국적 VIP 응대와 현장 운영 지원',
+        en: 'Supported multinational VIP guests and on-site operations at the Korea House VIP Lounge.',
       },
       {
-        ko: 'Korea House 브랜드 메시지가 글로벌 청중에게 전달되는 접점 관리',
-        en: 'Managed the audience touchpoints where the Korea House brand message met a global audience.',
+        ko: '하루 20명 이상의 VIP 체크인·일정·재고 흐름 관리',
+        en: 'Managed check-in, schedules, and inventory flows for 20+ VIP guests per day.',
       },
       {
-        ko: '<b>영어(C1) · 프랑스어(B2)</b>로 현지 운영진 ↔ 한국 대표단 실시간 조율',
-        en: 'Coordinated live between local operators and the Korean delegation in <b>English (C1) and French (B2)</b>.',
+        ko: '영어 및 기본 프랑스어로 현지 운영진과 한국 대표단 실시간 조율',
+        en: 'Coordinated in English and basic French between local operators and the Korean delegation.',
       },
       {
-        ko: '메가 이벤트 현장의 위기 관리 · 크로스컬처 커뮤니케이션 역량',
-        en: 'Built real-world strength in crisis handling and cross-cultural communication during a mega event.',
+        ko: '현장 이슈에 대응하며 글로벌 고객 경험과 크로스컬처 커뮤니케이션 수행',
+        en: 'Handled on-site issues while delivering global customer experience and cross-cultural communication.',
       },
     ],
-    badges: ['Brand Experience', 'Global Ops', 'English C1', 'French B2'],
+    badges: ['Global Ops', 'VIP Operations', 'Customer Experience', 'Cross-cultural Comm'],
   },
   {
     id: 'sports-events',
-    tag: 'Sports Event · Sponsorship',
+    tag: 'Business Development · Sponsorship',
     period: '2023.03 — 2023.06',
     org: {
       ko: '한국외국어대학교',
@@ -407,77 +490,71 @@ const EXPERIENCES = [
     },
     role: 'Sponsorship & Administration · Team Project',
     title: {
-      ko: '교내 마라톤 대회 기획 운영',
-      en: 'Planned and operated a campus marathon event',
+      ko: '교내 마라톤 대회 — 파트너십과 사업개발',
+      en: 'Campus marathon — business development and sponsorship',
     },
     bullets: [
       {
-        ko: '기획&운영까지 전체 프로세스 주도',
-        en: 'Led the full process from event planning through on-site execution.',
+        ko: '약 150개 기업에 연락해 외부 파트너십 기회 발굴',
+        en: 'Contacted around 150 companies to identify external partnership opportunities.',
       },
       {
-        ko: '<b>150명 참가자 모집, 스폰서 5개사 유치, 예산 300만 원 확보</b>',
-        en: '<b>Recruited 150 participants, secured 5 sponsors, and raised a KRW 3M budget.</b>',
+        ko: '<b>스폰서 5개사 유치, 약 300만 원 후원, 약 150명 참가</b>',
+        en: '<b>Secured 5 sponsors, raised about KRW 3M, and attracted around 150 participants.</b>',
       },
       {
-        ko: '스폰서 제안서 구성(브랜드 노출안 + 상호 혜택 구조 제시)',
-        en: 'Developed sponsor proposals with visibility packages and mutual benefit structures.',
+        ko: '스폰서 제안서와 브랜드 노출·상호 혜택 구조 설계',
+        en: 'Designed sponsorship proposals with visibility and mutual-benefit structures.',
       },
       {
-        ko: '예산 집행, 홍보 콘텐츠 제작, 기업 대상 대외협력, 회계 담당',
-        en: 'Handled budget execution, promotional content, sponsor communication, and accounting.',
+        ko: '예산 집행, 기업 커뮤니케이션, 일정·운영 계획 문서화 담당',
+        en: 'Handled budget execution, company communication, and documentation of schedules and operating plans.',
       },
       {
-        ko: '일정 변경 등 돌발 상황 시 즉시 대응을 통한 위기관리능력 확보',
-        en: 'Responded quickly to schedule changes and other unexpected issues on the ground.',
-      },
-      {
-        ko: '실행 계획 문서화 및 회의 운영으로 실무 커뮤니케이션 능력 확보',
-        en: 'Strengthened practical communication through runbooks, documentation, and meeting facilitation.',
+        ko: '돌발 상황에 대응하며 행사를 계획부터 현장 실행까지 운영',
+        en: 'Operated the event from planning through on-site execution while responding to unexpected issues.',
       },
     ],
-    badges: ['Event Planning', 'Sponsorship', 'PR · Content', 'Budget Mgmt'],
+    badges: ['Business Development', 'Partnership', 'Sponsorship', 'Budget Mgmt'],
   },
   {
-    id: 'sports-retail',
-    tag: 'Sports Marketing · Brand',
-    period: '2022.03 — 2022.06',
-    org: {
-      ko: '한국외국어대학교',
-      en: 'Hankuk University of Foreign Studies',
-    },
-    role: 'Marketing Role · Team Project',
+    id: 'neoma',
+    tag: 'Global Communication · Cross-cultural Experience',
+    period: 'International Experience',
+    org: 'NEOMA Business School',
+    role: 'International Student Experience',
     title: {
-      ko: '교내 글로벌 스포츠 브랜드 마케팅',
-      en: 'Campus marketing for a global sports brand',
+      ko: '영어 기반 수업과 국제 학생 협업',
+      en: 'English-based coursework and cross-cultural collaboration',
     },
     bullets: [
       {
-        ko: '교내 스포츠 브랜드 런칭, 신제품 론칭 전략 수립 <b>(4P 기반)</b>',
-        en: 'Built a campus brand launch and new product go-to-market strategy <b>based on 4P</b>.',
+        ko: '영어 기반 수업과 다양한 국적의 학생들과의 팀 프로젝트 경험',
+        en: 'Took English-based courses and worked on team projects with students from different countries.',
       },
       {
-        ko: '타깃 설정, 마케팅 전략, 팝업 부스 기획 및 운영',
-        en: 'Defined the target audience, shaped the strategy, and planned and operated a pop-up booth.',
+        ko: '국제 학생들과 협업하며 다른 관점과 업무 방식을 조율',
+        en: 'Aligned different perspectives and ways of working through collaboration with international students.',
       },
       {
-        ko: '마케팅 및 회계 담당, <b>300개 스포츠 양말 판매, 850,000원 순수익</b>',
-        en: 'Owned marketing and finance, generating <b>300 sock sales and KRW 850,000 in net profit</b>.',
+        ko: '프랑스 생활을 통해 문화적 맥락을 이해하고 글로벌 커뮤니케이션 시야 확장',
+        en: 'Expanded my global communication perspective through life in France and cultural immersion.',
       },
       {
-        ko: '인스타그램, 블로그 활용한 SNS 마케팅 업무 수행',
-        en: 'Executed SNS marketing across Instagram and blogs.',
+        ko: '언어와 문화가 다른 구성원 사이에서 협업하는 기반 형성',
+        en: 'Built a foundation for collaborating across different languages and cultures.',
       },
     ],
-    badges: ['Brand Launch', '4P Strategy', 'SNS Marketing', 'Pop-up Booth'],
+    badges: ['Global Communication', 'Cross-cultural', 'Team Collaboration', 'France'],
   },
 ];
 
 const SKILLS = [
-  { group: 'Marketing', items: ['Brand · GTM', 'Content · Copy', 'Campaign Planning', 'Performance Marketing', 'Funnel Analysis', 'A/B Testing'] },
-  { group: 'eCommerce', items: ['O2O Channel Mix', 'Olive Young · Musinsa', 'CRM · Retention', 'Z-Gen · Beauty Insight'] },
-  { group: 'MarTech', items: ['Marketing Automation', 'AI / LLM', 'Python · SQL', 'API · Crawling', 'GA · Amplitude'] },
-  { group: 'Tools', items: ['Figma', 'Notion · Slack', 'Meta · TikTok Ads', 'Workflow Automation'] },
+  { group: 'Product', items: ['Product Planning', 'UX Flow', 'User Research · Feedback', 'Service Operations'] },
+  { group: 'AI', items: ['LLM', 'Prompt Design', 'AI-assisted Prototyping', 'Recommendation Logic', 'Vision AI Understanding'] },
+  { group: 'Data / Tech', items: ['Supabase', 'SQL', 'GA4', 'Firebase', 'API Integration', 'Git · GitHub'] },
+  { group: 'Design', items: ['Figma', 'Photoshop'] },
+  { group: 'Business', items: ['Business Planning', 'Program Operations', 'Partnership', 'Global Communication'] },
 ];
 
 const LANGUAGES = [
@@ -488,12 +565,12 @@ const LANGUAGES = [
   },
   {
     lang: { ko: '영어', en: 'English' },
-    sub: { ko: '비즈니스 실무 · C1', en: 'Professional · C1' },
+    sub: { ko: '비즈니스 실무', en: 'Business level' },
     level: 0.85,
   },
   {
     lang: { ko: '프랑스어', en: 'French' },
-    sub: { ko: '업무 가능 · B2', en: 'Working · B2' },
+    sub: { ko: '중급', en: 'Intermediate' },
     level: 0.65,
   },
 ];

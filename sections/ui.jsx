@@ -48,6 +48,20 @@ const BrowserShowcase = ({ media }) => {
           title={t(current.label)}
           loading="lazy"
         />
+      ) : current.type === 'video' ? (
+        <div className="flex h-[420px] items-center justify-center bg-fg-soft">
+          <video
+            key={current.src}
+            src={current.src}
+            className="block h-full w-full object-contain"
+            controls
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-label={t(current.label)}
+          />
+        </div>
       ) : (
         <div className="flex h-[420px] items-center justify-center bg-fg-soft">
           <img
@@ -116,14 +130,14 @@ const Pill = ({ children, tone = 'soft' }) => (
   </span>
 );
 
-const Headline = ({ eyebrow, title, sub }) => (
+const Headline = ({ eyebrow, title, sub, subClassName = '' }) => (
   <div className="reveal mb-10 md:mb-14">
     <div className="text-[12px] font-bold uppercase tracking-[0.16em] text-trust">{eyebrow}</div>
     <h2 className="mt-2 text-[28px] font-extrabold leading-[1.15] tracking-[-0.02em] text-fg md:text-[40px]">
       {title}
     </h2>
     {sub && (
-      <p className="mt-3 max-w-[640px] text-[15px] leading-[1.7] text-fg-sub md:text-[16px]">
+      <p className={'mt-3 max-w-[640px] text-[15px] leading-[1.7] text-fg-sub md:text-[16px] ' + subClassName}>
         {sub}
       </p>
     )}

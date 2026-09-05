@@ -1,4 +1,4 @@
-const SKILL_ICONS = ['trending', 'database', 'cpu', 'layers'];
+const SKILL_ICONS = ['layers', 'sparkles', 'database', 'image', 'briefcase'];
 
 const SkillsSection = () => {
   const { t } = useLanguage();

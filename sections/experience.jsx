@@ -1,31 +1,32 @@
 const EXPERIENCE_BACKGROUNDS = {
-  'loreal-brandstorm': "assets/L'oreal.jpeg",
   'paris-2024': 'assets/Paris 2024.jpeg',
   'sports-events': 'assets/Sports Event.png',
-  'sports-retail': 'assets/Sports marketing.jpeg',
 };
 
 const ExperienceCard = ({ e, idx }) => {
   const { t } = useLanguage();
+  const background = EXPERIENCE_BACKGROUNDS[e.id];
 
   return (
     <article className="reveal lift surface relative overflow-hidden rounded-2xl bg-fg-page p-6 md:p-7">
-      <div className="absolute inset-0 z-0">
-        <img
-          src={EXPERIENCE_BACKGROUNDS[e.id]}
-          alt=""
-          aria-hidden="true"
-          className="h-full w-full opacity-[0.11]"
-          style={{ objectFit: 'cover', objectPosition: 'center' }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(180deg, color-mix(in srgb, var(--color-bg-white) 34%, transparent), color-mix(in srgb, var(--color-bg-white) 82%, transparent))',
-          }}
-        />
-      </div>
+      {background && (
+        <div className="absolute inset-0 z-0">
+          <img
+            src={background}
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full opacity-[0.11]"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(180deg, color-mix(in srgb, var(--color-bg-white) 34%, transparent), color-mix(in srgb, var(--color-bg-white) 82%, transparent))',
+            }}
+          />
+        </div>
+      )}
 
       <div
         className="relative z-10"
@@ -79,14 +80,22 @@ const ExperienceCard = ({ e, idx }) => {
 
 const ExperienceSection = () => {
   const { t } = useLanguage();
+  const experienceTitle = t(COPY.sections.experience.title);
+  const [titleLead, titleRest] = experienceTitle.split(' — ');
 
   return (
     <section id="experience" className="border-y border-fg-line bg-fg-soft">
       <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-8 md:py-24">
         <Headline
           eyebrow={t(COPY.sections.experience.eyebrow)}
-          title={t(COPY.sections.experience.title)}
+          title={
+            <>
+              <span className="block">{titleLead} —</span>
+              <span className="block">{titleRest}</span>
+            </>
+          }
           sub={t(COPY.sections.experience.sub)}
+          subClassName="md:max-w-none lg:whitespace-nowrap"
         />
 
         <div className="grid gap-5 md:grid-cols-2 md:gap-6">
