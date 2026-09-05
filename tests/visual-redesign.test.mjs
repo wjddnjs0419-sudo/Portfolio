@@ -13,7 +13,7 @@ assert.match(hero, /hero-orbit/, 'Hero should include the orbit visual treatment
 assert.match(hero, /proof-strip/, 'Hero should render one connected proof strip');
 assert.doesNotMatch(hero, /hobbies\.map/, 'Hero should no longer render the hobby expansion grid');
 assert.equal((hero.match(/hero-title-line/g) || []).length, 2, 'Korean hero headline should be rendered as exactly two intentional lines');
-assert.match(hero, /hero-portrait-generated\.svg/, 'Hero should use the regenerated portrait asset derived from the approved mockup direction');
+assert.match(hero, /hero-portrait-final\.webp/, 'Hero should use the regenerated portrait asset derived from the user-provided photo');
 assert.match(hero, /hero-quote/, 'Hero should include the short signature quote from the approved mockup');
 assert.match(hero, /proof-strip-icon/, 'Hero proof strip should use visual icon medallions like the approved mockup');
 
