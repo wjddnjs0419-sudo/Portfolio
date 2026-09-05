@@ -20,3 +20,36 @@ jobs:
           node-version: '20'
       - name: Run redesign source tests
         run: node tests/visual-redesign.test.mjs
+
+  browser-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start static server
+        run: |
+          mkdir -p artifacts
+          python3 -m http.server 4173 > /tmp/portfolio-server.log 2>&1 &
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/portfolio-server.log
+          exit 1
+      - name: Run responsive browser smoke checks
+        run: node tests/browser-smoke.mjs
+      - name: Upload visual screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-visual-redesign-screenshots
+          path: artifacts/*.png
+          if-no-files-found: warn
