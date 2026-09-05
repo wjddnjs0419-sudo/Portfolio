@@ -23,20 +23,28 @@ try {
     await page.waitForSelector('#top h1', { timeout: 30_000 });
     await page.waitForTimeout(1_000);
 
-    const state = await page.evaluate(() => ({
-      width: window.innerWidth,
-      scrollWidth: document.documentElement.scrollWidth,
-      hero: document.querySelector('#top h1')?.textContent?.trim() || '',
-      hasProofStrip: Boolean(document.querySelector('.proof-strip')),
-      hasProjectEditorial: Boolean(document.querySelector('.project-editorial')),
-      hasFeaturedExperience: Boolean(document.querySelector('.featured-experience')),
-      hasCapabilities: Boolean(document.querySelector('.capability-pillars')),
-      hasClosingCta: Boolean(document.querySelector('.closing-cta')),
-      brokenImages: [...document.images]
-        .filter((image) => image.complete && image.naturalWidth === 0)
-        .map((image) => image.getAttribute('src')),
-      videoCount: document.querySelectorAll('video').length,
-    }));
+    const state = await page.evaluate(() => {
+      const ncfIframe = document.querySelector('.project-visual-web iframe');
+      const demoVideo = document.querySelector('.project-visual-date video');
+      const experienceText = document.querySelector('#experience')?.textContent || '';
+      return {
+        width: window.innerWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+        hero: document.querySelector('#top h1')?.textContent?.trim() || '',
+        hasProofStrip: Boolean(document.querySelector('.proof-strip')),
+        hasProjectEditorial: Boolean(document.querySelector('.project-editorial')),
+        hasFeaturedExperience: Boolean(document.querySelector('.featured-experience')),
+        hasCapabilities: Boolean(document.querySelector('.capability-pillars')),
+        hasClosingCta: Boolean(document.querySelector('.closing-cta')),
+        brokenImages: [...document.images]
+          .filter((image) => image.complete && image.naturalWidth === 0)
+          .map((image) => image.getAttribute('src')),
+        videoCount: document.querySelectorAll('video').length,
+        demoHasControls: Boolean(demoVideo?.controls),
+        ncfIframeSrc: ncfIframe?.getAttribute('src') || '',
+        experienceText,
+      };
+    });
 
     if (!state.hero.includes('문제를 발견하고')) {
       throw new Error(`${viewport.name}: Korean hero did not render: ${state.hero}`);
@@ -50,8 +58,14 @@ try {
     if (state.brokenImages.length) {
       throw new Error(`${viewport.name}: broken images: ${state.brokenImages.join(', ')}`);
     }
-    if (state.videoCount < 1) {
-      throw new Error(`${viewport.name}: Date-navi video element did not render`);
+    if (state.videoCount < 1 || !state.demoHasControls) {
+      throw new Error(`${viewport.name}: Date-navi playable demo video did not render`);
+    }
+    if (!state.ncfIframeSrc.includes('https://ncf-aroundx.com/')) {
+      throw new Error(`${viewport.name}: Next Challenge live homepage iframe was not restored`);
+    }
+    if (state.experienceText.includes('Next Challenge') || state.experienceText.includes('NEOMA')) {
+      throw new Error(`${viewport.name}: Experience still contains duplicated NCF or education content`);
     }
     if (runtimeErrors.length) {
       throw new Error(`${viewport.name}: runtime errors: ${runtimeErrors.join(' | ')}`);
