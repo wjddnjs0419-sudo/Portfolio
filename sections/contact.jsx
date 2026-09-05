@@ -8,20 +8,39 @@ const ContactSection = () => {
         <div className="closing-cta reveal">
           <img className="closing-cta-photo" src="assets/Paris 2024.jpeg" alt="Paris 2024" />
           <div className="closing-cta-photo-overlay" />
+
           <div className="closing-cta-copy">
             <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-trust">{t(COPY.sections.contact.eyebrow)}</div>
-            <h2>{t({ ko: '사업과 기술이 서비스로 만나는 자리에서.', en: 'Where business and technology become real services.' })}</h2>
-            <p>{t({ ko: '문제를 발견하고 직접 움직이는 사람을 찾고 있다면 연락 주세요. 보통 24시간 이내 회신드립니다.', en: 'If you are looking for someone who finds problems and moves them forward, get in touch. I usually reply within 24 hours.' })}</p>
+            <h2>{t({ ko: '사업과 기술이\n서비스로 만나는 자리에서.', en: 'Where business and technology\nbecome real services.' })}</h2>
+            <p>{t({ ko: '더 나은 세상을 만드는 프로젝트를 함께하고 싶습니다. 새로운 기회에 언제든지 편하게 연락 주세요.', en: 'I want to build projects that make things better. Feel free to reach out about new opportunities.' })}</p>
             <div className="closing-cta-actions">
               <a href={`mailto:${PROFILE.email}`} className="hero-btn hero-btn-primary"><Icon name="mail" size={16} stroke={2} />{t({ ko: '이메일 보내기', en: 'Send an email' })}</a>
               <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer" className="hero-btn hero-btn-secondary"><Icon name="linkedin" size={16} stroke={1.9} />LinkedIn</a>
             </div>
           </div>
-          <div className="closing-status">
-            <div className="closing-status-label">Open to opportunities</div>
-            <strong>{availability}</strong>
-            <span>{t(PROFILE.roleFocus)}</span>
-            <span>Seoul, South Korea</span>
+
+          <div className="closing-contact-column">
+            <div className="closing-contact-details">
+              <a href={`mailto:${PROFILE.email}`}>
+                <Icon name="mail" size={17} stroke={1.9} />
+                <span><small>Email</small><strong>{PROFILE.email}</strong></span>
+              </a>
+              <a href={`tel:${PROFILE.phone.replace(/-/g, '')}`}>
+                <Icon name="phone" size={17} stroke={1.9} />
+                <span><small>Phone</small><strong>{PROFILE.phone}</strong></span>
+              </a>
+              <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer">
+                <Icon name="linkedin" size={17} stroke={1.9} />
+                <span><small>LinkedIn</small><strong>Jeongwon Kim</strong></span>
+              </a>
+            </div>
+
+            <div className="closing-status">
+              <div className="closing-status-label">Open to opportunities</div>
+              <strong>{availability}</strong>
+              <span>{t(PROFILE.roleFocus)}</span>
+              <span>Seoul, South Korea</span>
+            </div>
           </div>
         </div>
       </div>
