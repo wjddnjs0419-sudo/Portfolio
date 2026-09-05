@@ -77,6 +77,24 @@ try {
       await page.getByRole('button', { name: '메뉴 닫기' }).click();
     }
 
+    await page.evaluate(async () => {
+      const step = Math.max(320, Math.floor(window.innerHeight * 0.72));
+      const maxY = document.documentElement.scrollHeight - window.innerHeight;
+      for (let y = 0; y <= maxY; y += step) {
+        window.scrollTo(0, y);
+        await new Promise((resolve) => setTimeout(resolve, 90));
+      }
+      window.scrollTo(0, maxY);
+      await new Promise((resolve) => setTimeout(resolve, 180));
+      window.scrollTo(0, 0);
+      await new Promise((resolve) => setTimeout(resolve, 220));
+    });
+
+    const unrevealedCount = await page.locator('.reveal:not(.in)').count();
+    if (unrevealedCount > 0) {
+      throw new Error(`${viewport.name}: ${unrevealedCount} reveal elements never became visible while scrolling`);
+    }
+
     await page.screenshot({
       path: `artifacts/portfolio-${viewport.name}.png`,
       fullPage: true,
