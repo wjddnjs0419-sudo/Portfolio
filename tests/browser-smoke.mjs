@@ -77,18 +77,17 @@ try {
       await page.getByRole('button', { name: '메뉴 닫기' }).click();
     }
 
-    await page.evaluate(async () => {
-      const step = Math.max(320, Math.floor(window.innerHeight * 0.72));
-      const maxY = document.documentElement.scrollHeight - window.innerHeight;
-      for (let y = 0; y <= maxY; y += step) {
-        window.scrollTo(0, y);
-        await new Promise((resolve) => setTimeout(resolve, 90));
-      }
-      window.scrollTo(0, maxY);
-      await new Promise((resolve) => setTimeout(resolve, 180));
-      window.scrollTo(0, 0);
-      await new Promise((resolve) => setTimeout(resolve, 220));
+    await page.evaluate(() => {
+      document.documentElement.style.scrollBehavior = 'auto';
     });
+    const revealElements = page.locator('.reveal');
+    const revealCount = await revealElements.count();
+    for (let index = 0; index < revealCount; index += 1) {
+      await revealElements.nth(index).scrollIntoViewIfNeeded();
+      await page.waitForTimeout(100);
+    }
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(220);
 
     const unrevealedCount = await page.locator('.reveal:not(.in)').count();
     if (unrevealedCount > 0) {
