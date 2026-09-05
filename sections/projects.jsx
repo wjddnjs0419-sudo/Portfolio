@@ -37,9 +37,29 @@ const ProjectVisualCollage = ({ project }) => {
           <img src={home?.src} alt={home ? t(home.label) : 'Date-navi home'} />
         </div>
 
-        <div className="device-phone device-phone-center device-phone-demo">
+        <div className="device-phone device-phone-center">
           <div className="device-island" />
-          <div className="device-demo-badge">
+          <div
+            className="device-demo-badge"
+            style={{
+              position: 'absolute',
+              zIndex: 6,
+              top: '24px',
+              left: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              transform: 'translateX(-50%)',
+              whiteSpace: 'nowrap',
+              borderRadius: '999px',
+              padding: '5px 8px',
+              background: 'rgba(255,255,255,.9)',
+              boxShadow: '0 4px 14px rgba(15,23,42,.12)',
+              fontSize: '9px',
+              fontWeight: 750,
+              color: 'var(--color-text-main)',
+            }}
+          >
             <span className="project-live-dot" />
             {t({ ko: '앱 시연 영상', en: 'App demo' })}
           </div>
@@ -70,7 +90,7 @@ const ProjectVisualCollage = ({ project }) => {
 
   return (
     <div className="project-visual project-visual-web">
-      <div className="browser-frame browser-frame-main browser-frame-live">
+      <div className="browser-frame browser-frame-main">
         <div className="browser-bar">
           <span /><span /><span />
           <em>ncf-aroundx.com</em>
@@ -81,13 +101,31 @@ const ProjectVisualCollage = ({ project }) => {
             title={t(liveHomepage.label)}
             loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"
+            style={{ width: '100%', height: 'calc(100% - 28px)', border: 0, display: 'block', background: 'white' }}
           />
         ) : (
           <img src={admin?.src} alt={admin ? t(admin.label) : 'Next Challenge admin'} />
         )}
-        <div className="browser-live-label">
+        <div
+          style={{
+            position: 'absolute',
+            zIndex: 4,
+            right: '10px',
+            bottom: '10px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            borderRadius: '999px',
+            padding: '5px 8px',
+            background: 'rgba(255,255,255,.92)',
+            boxShadow: '0 4px 14px rgba(15,23,42,.12)',
+            fontSize: '8px',
+            fontWeight: 700,
+            color: 'var(--color-text-main)',
+          }}
+        >
           <span className="project-live-dot" />
-          {t({ ko: '실제 운영 중인 메인 페이지', en: 'Live operating homepage' })}
+          {t({ ko: 'LIVE 메인 페이지', en: 'LIVE homepage' })}
         </div>
       </div>
 
