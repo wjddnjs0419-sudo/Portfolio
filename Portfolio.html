@@ -7,124 +7,48 @@
 
 <link rel="stylesheet" href="tokens.css" />
 <link rel="stylesheet" href="redesign-v2.css" />
+<link rel="stylesheet" href="redesign-v2-fix.css" />
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
 <script>
   tailwind.config = {
     darkMode: 'class',
     theme: {
       extend: {
-        fontFamily: {
-          sans: ['var(--font-sans)'],
-        },
+        fontFamily: { sans: ['var(--font-sans)'] },
         colors: {
-          ink:       'var(--color-text-main)',
-          inksub:    'var(--color-text-sub)',
-          paper:     'var(--color-bg-white)',
-          mist:      'var(--color-bg-gray)',
-          line:      'var(--color-border)',
-          trust:     'var(--color-primary)',
-          trustdark: 'var(--color-primary-dark)',
-          trustsoft: 'var(--color-primary-light)',
+          ink: 'var(--color-text-main)', inksub: 'var(--color-text-sub)', paper: 'var(--color-bg-white)',
+          mist: 'var(--color-bg-gray)', line: 'var(--color-border)', trust: 'var(--color-primary)',
+          trustdark: 'var(--color-primary-dark)', trustsoft: 'var(--color-primary-light)',
         },
         boxShadow: {
-          sm: 'var(--shadow-sm)',
-          md: 'var(--shadow-md)',
-          lg: 'var(--shadow-lg)',
+          sm: 'var(--shadow-sm)', md: 'var(--shadow-md)', lg: 'var(--shadow-lg)',
           glass: '0 1px 0 rgba(255,255,255,0.6) inset, 0 12px 40px -12px rgba(15,23,42,0.10)',
         },
       }
     }
   }
 </script>
-
 <style>
   html, body { font-family: var(--font-sans); background: var(--color-bg-white); color: var(--color-text-main); }
-
-  /* Subtle dot grid background, theme-aware */
-  .bg-grid::before{
-    content:""; position:absolute; inset:0; pointer-events:none;
-    background-image:
-      radial-gradient(var(--grid-color) 1px, transparent 1px);
-    background-size: 28px 28px;
-    mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 50%, transparent 100%);
-  }
-
-  /* Glass card */
-  .glass{
-    background: var(--glass-bg);
-    backdrop-filter: saturate(160%) blur(14px);
-    -webkit-backdrop-filter: saturate(160%) blur(14px);
-    border: 1px solid var(--glass-bd);
-  }
-
-  /* Muted card */
-  .surface{
-    background: var(--color-bg-white);
-    border: 1px solid var(--color-border);
-    transition: border-color .25s var(--ease-standard), box-shadow .25s var(--ease-standard), transform .35s var(--ease-standard);
-  }
-  .surface:hover{
-    border-color: var(--surface-hover-border);
-    box-shadow: var(--shadow-md);
-  }
-
-  /* Type tweaks for dark mode */
-  .text-fg     { color: var(--color-text-main); }
-  .text-fg-sub { color: var(--color-text-sub); }
-  .bg-fg-page  { background: var(--color-bg-white); }
-  .bg-fg-soft  { background: var(--color-bg-gray); }
-  .border-fg-line { border-color: var(--color-border); }
-
-  /* Reveal on scroll */
-  .reveal{ opacity:0; transform: translateY(14px); transition: opacity .7s var(--ease-standard), transform .7s var(--ease-standard); }
-  .reveal.in{ opacity:1; transform: translateY(0); }
-
-  /* Timeline rail */
-  .rail::before{
-    content:""; position:absolute; left: 11px; top: 6px; bottom: 6px; width: 2px;
-    background: linear-gradient(to bottom, var(--color-border) 0%, var(--color-border) 80%, transparent 100%);
-  }
-
-  /* Subtle gradient text */
-  .grad-text{
-    background: linear-gradient(110deg, var(--color-primary) 0%, var(--color-primary-dark) 60%, var(--color-primary-bright) 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-
-  /* Hover lift for cards */
-  .lift{ transition: transform .35s var(--ease-standard), box-shadow .35s var(--ease-standard), border-color .35s var(--ease-standard); }
-  .lift:hover{ transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-
-  /* Selection */
-  ::selection { background: var(--selection-bg); color: inherit; }
-
-  /* Hide scrollbar styling for cleaner look */
-  html { scroll-behavior: smooth; }
-
-  /* Marker bullet */
-  .bul{ position: relative; padding-left: 18px; }
-  .bul::before{
-    content:""; position:absolute; left:2px; top:.65em; width:6px; height:6px; border-radius:999px;
-    background: var(--color-primary);
-  }
-
-  /* Spotlight gradient behind hero */
-  .spotlight::after{
-    content:""; position:absolute; inset:auto; left:50%; top:-10%; width: 800px; height: 800px;
-    transform: translateX(-50%);
-    background: radial-gradient(closest-side, var(--hero-spotlight), transparent 70%);
-    pointer-events:none; z-index:0;
-  }
-
+  .bg-grid::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(var(--grid-color) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 50%,transparent 100%)}
+  .glass{background:var(--glass-bg);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border:1px solid var(--glass-bd)}
+  .surface{background:var(--color-bg-white);border:1px solid var(--color-border);transition:border-color .25s var(--ease-standard),box-shadow .25s var(--ease-standard),transform .35s var(--ease-standard)}
+  .surface:hover{border-color:var(--surface-hover-border);box-shadow:var(--shadow-md)}
+  .text-fg{color:var(--color-text-main)}.text-fg-sub{color:var(--color-text-sub)}.bg-fg-page{background:var(--color-bg-white)}.bg-fg-soft{background:var(--color-bg-gray)}.border-fg-line{border-color:var(--color-border)}
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease-standard),transform .7s var(--ease-standard)}.reveal.in{opacity:1;transform:translateY(0)}
+  .rail::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:linear-gradient(to bottom,var(--color-border) 0%,var(--color-border) 80%,transparent 100%)}
+  .grad-text{background:linear-gradient(110deg,var(--color-primary) 0%,var(--color-primary-dark) 60%,var(--color-primary-bright) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lift{transition:transform .35s var(--ease-standard),box-shadow .35s var(--ease-standard),border-color .35s var(--ease-standard)}.lift:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  ::selection{background:var(--selection-bg);color:inherit}html{scroll-behavior:smooth}
+  .bul{position:relative;padding-left:18px}.bul::before{content:"";position:absolute;left:2px;top:.65em;width:6px;height:6px;border-radius:999px;background:var(--color-primary)}
+  .spotlight::after{content:"";position:absolute;left:50%;top:-10%;width:800px;height:800px;transform:translateX(-50%);background:radial-gradient(closest-side,var(--hero-spotlight),transparent 70%);pointer-events:none;z-index:0}
 </style>
 </head>
 <body class="font-sans antialiased">
   <div id="root"></div>
-
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
   <script src="image-slot.js"></script>
   <script type="text/babel" src="icons.jsx"></script>
   <script type="text/babel" src="language-context.jsx"></script>
