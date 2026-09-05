@@ -29,3 +29,98 @@
   .hero-title { font-size: 52px !important; }
   .hero-second-line { white-space: nowrap !important; }
 }
+
+/* Detail pass: stronger editorial hierarchy and mockup rhythm */
+html, body { overflow-x: clip; }
+
+header .glass { background: rgba(255,255,255,.88) !important; }
+header nav a { font-weight: 620; }
+
+.projects-intro h2 span,
+.capabilities-intro h2 span,
+.experience-intro h2 span,
+.experience-intro h2 strong,
+.capabilities-intro h2 strong {
+  display: block;
+}
+.experience-intro h2 strong,
+.capabilities-intro h2 strong {
+  color: var(--color-primary);
+  font-weight: 900;
+}
+.projects-intro h2::first-line { color: var(--color-text-main); }
+
+@media (min-width: 1024px) {
+  .hero-section > div { padding-top: 86px !important; }
+  .hero-layout { min-height: 650px !important; }
+  .hero-visual-wrap, .hero-orbit { min-height: 640px !important; height: 640px !important; }
+  .hero-globe { width: 500px !important; height: 500px !important; }
+  .hero-photo-shell { width: 402px !important; height: 548px !important; bottom: -8px !important; }
+  .floating-proof { width: 184px !important; min-height: 78px !important; }
+  .proof-a { top: 15% !important; left: -4% !important; }
+  .proof-b { bottom: 25% !important; left: -7% !important; }
+  .proof-c { top: 25% !important; right: -6% !important; }
+  .proof-d { bottom: 15% !important; right: -3% !important; }
+  .proof-strip { margin-top: 34px !important; }
+  .proof-strip-item { min-height: 132px !important; }
+
+  .projects-intro { padding-top: 4px; padding-bottom: 42px !important; }
+  .projects-intro h2 { font-size: 60px !important; }
+  .projects-intro > p { align-self: center; font-size: 16px !important; }
+  .project-canvas { padding: 82px 0 !important; }
+  .project-canvas:first-child { padding-top: 64px !important; }
+  .project-name { font-size: 74px !important; }
+  .project-visual-date { min-height: 650px !important; }
+  .device-phone-left { left: 2% !important; }
+  .device-phone-center { left: 33% !important; width: 35% !important; }
+  .device-phone-right { right: 0 !important; }
+  .project-visual-web { min-height: 630px !important; }
+  .project-laptop { left: -1% !important; right: 4% !important; top: 9% !important; height: 76% !important; }
+  .browser-frame-mini { width: 38% !important; }
+
+  .experience-feature-row {
+    grid-template-columns: minmax(355px, .78fr) minmax(0, 1.22fr) !important;
+    gap: 48px !important;
+    align-items: center !important;
+  }
+  .experience-intro h2 { font-size: 50px !important; }
+  .experience-intro > p { font-size: 15px !important; }
+  .featured-experience { min-height: 420px !important; }
+  .featured-experience-content { min-height: 420px !important; }
+  .supporting-experience-wrap { margin-top: 28px !important; }
+  .supporting-experience-feature {
+    grid-template-columns: minmax(360px, .72fr) minmax(0, 1.28fr) !important;
+    min-height: 300px !important;
+  }
+  .supporting-experience-media { min-height: 300px !important; }
+  .supporting-experience-media img { object-position: center 42%; }
+
+  .capabilities-intro { padding-bottom: 38px !important; }
+  .capabilities-intro h2 { font-size: 50px !important; }
+  .capability-compact .capability-pillar { min-height: 172px !important; }
+  .capability-detail-panel { min-height: 166px !important; }
+
+  .closing-cta { min-height: 390px !important; }
+  .closing-cta-photo { left: 52% !important; width: 48% !important; object-position: center 45% !important; }
+  .closing-cta-copy h2 { font-size: 50px !important; }
+}
+
+@media (max-width: 767px) {
+  .hero-title-line { display: block !important; }
+  .hero-photo-shell { width: 258px !important; height: 345px !important; }
+  .proof-strip-item { min-height: 108px !important; }
+
+  .projects-intro h2,
+  .experience-intro h2,
+  .capabilities-intro h2 { font-size: 32px !important; }
+  .project-name { font-size: 42px !important; }
+  .project-canvas { padding-block: 44px !important; }
+
+  .experience-feature-row { display: block !important; }
+  .featured-experience { margin-top: 26px !important; }
+  .supporting-experience-feature { margin-top: 16px; }
+  .supporting-experience-media { min-height: 230px !important; }
+
+  .capability-detail-grid { gap: 8px !important; }
+  .closing-cta-photo { opacity: .28 !important; }
+}
