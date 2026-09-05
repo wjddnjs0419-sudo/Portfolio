@@ -14,8 +14,8 @@ const FeaturedExperience = ({ experience }) => {
           </div>
           <div className="featured-experience-metrics">
             <div><strong>20+</strong><span>VIP / day</span></div>
-            <div><strong>Korea House</strong><span>VIP Lounge</span></div>
             <div><strong>Global</strong><span>Operations</span></div>
+            <div><strong>Korea House</strong><span>VIP Lounge</span></div>
           </div>
         </div>
       </div>
@@ -54,9 +54,22 @@ const ExperienceSection = () => {
   return (
     <section id="experience" className="border-y border-fg-line bg-fg-soft experience-section">
       <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-8 md:py-24">
-        <div className="section-micro-title">{t({ ko: '경험 · FEATURED EXPERIENCE', en: 'EXPERIENCE · FEATURED EXPERIENCE' })}</div>
-        <div className="experience-grid">
+        <div className="experience-feature-row">
+          <div className="experience-intro reveal">
+            <div className="section-micro-title">{t({ ko: '경험 · FEATURED EXPERIENCE', en: 'EXPERIENCE · FEATURED EXPERIENCE' })}</div>
+            <h2>{t({
+              ko: '글로벌, 운영, 비즈니스의 맥락에서 문제를 구조화하고,\n실제로 해결해왔습니다.',
+              en: 'Across global, operations, and business contexts,\nI structure problems and solve them in practice.',
+            })}</h2>
+            <p>{t({
+              ko: '다양한 현장에서 사람, 기술, 운영을 연결하며 실질적인 변화를 만들어낸 경험들입니다.',
+              en: 'Experiences connecting people, technology, and operations to create practical impact.',
+            })}</p>
+          </div>
           {featured && <FeaturedExperience experience={featured} />}
+        </div>
+
+        <div className="supporting-experience-wrap">
           {supporting.map((experience) => <SupportingExperience key={experience.id} experience={experience} />)}
         </div>
       </div>
