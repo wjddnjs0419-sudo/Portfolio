@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="relative mx-auto max-w-[1200px] px-6 pb-20 pt-16 md:px-8 md:pb-28 md:pt-24 lg:pt-28">
         <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1.12fr)_minmax(340px,.88fr)] md:gap-8 lg:gap-14">
           <div className="relative z-10 max-w-[720px]">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-fg-line bg-fg-page/80 px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-trustdark shadow-sm backdrop-blur-sm md:text-[12px]">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-fg-line bg-white/80 px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-trustdark shadow-sm backdrop-blur-sm md:text-[12px]">
               <span className="h-1.5 w-1.5 rounded-full bg-trust" />
               {t(COPY.hero.eyebrow)}
             </div>
@@ -118,7 +118,7 @@ const Hero = () => {
           ))}
         </div>
 
-        <div className="mt-10 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-fg-sub/70">
+        <div className="mt-10 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-fg-sub opacity-70">
           <span>{t({ ko: 'Selected Work', en: 'Selected Work' })}</span>
           <span className="h-px flex-1 bg-fg-line" />
         </div>
