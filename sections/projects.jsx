@@ -1,71 +1,175 @@
-const ProjectCard = ({ p, idx }) => {
+const DATE_NAVI_LINKS = {
+  appStore: 'https://apps.apple.com/kr/app/date-navi/id6794355525',
+  github: 'https://github.com/wjddnjs0419-sudo/Date-navi',
+};
+
+const getProjectCasePoints = (project) => {
+  const firstSection = project.sections?.[0];
+  const lastSection = project.sections?.[project.sections.length - 1];
+  return [
+    {
+      label: { ko: 'Problem', en: 'Problem' },
+      body: firstSection?.body?.[0],
+    },
+    {
+      label: { ko: 'Solution', en: 'Solution' },
+      body: firstSection?.body?.[1] || firstSection?.body?.[0],
+    },
+    {
+      label: { ko: 'Impact', en: 'Impact' },
+      body: lastSection?.body?.[lastSection.body.length - 1],
+    },
+  ].filter((item) => item.body);
+};
+
+const ProjectVisualCollage = ({ project }) => {
   const { t } = useLanguage();
 
+  if (project.id === 'date-navi') {
+    const home = project.media.find((item) => item.src.includes('home.png'));
+    const video = project.media.find((item) => item.type === 'video');
+    const result = project.media.find((item) => item.src.includes('recommendation-result'));
+
+    return (
+      <div className="project-visual project-visual-date">
+        <div className="device-phone device-phone-left">
+          <div className="device-island" />
+          <img src={home?.src} alt={home ? t(home.label) : 'Date-navi home'} />
+        </div>
+        <div className="device-phone device-phone-center">
+          <div className="device-island" />
+          {video && (
+            <video autoPlay muted loop playsInline preload="metadata" aria-label={t(video.label)}>
+              <source src={video.src} type="video/mp4" />
+            </video>
+          )}
+        </div>
+        <div className="device-phone device-phone-right">
+          <div className="device-island" />
+          <img src={result?.src} alt={result ? t(result.label) : 'Date-navi recommendation result'} />
+        </div>
+        <div className="project-visual-caption">
+          <span className="project-live-dot" />
+          {t({ ko: '실제 App Store 출시 화면 · 실제 코스 생성 영상', en: 'Real App Store product screens · real course generation video' })}
+        </div>
+      </div>
+    );
+  }
+
+  const admin = project.media.find((item) => item.src?.includes('admin'));
+  const automation = project.media.find((item) => item.src?.includes('automation'));
+  const figma = project.media.find((item) => item.src?.includes('figma'));
+
   return (
-    <article
-      className={
-        'reveal lift surface relative overflow-hidden rounded-2xl bg-fg-page p-7 ' +
-        'grid grid-cols-1 gap-x-8 gap-y-5 md:grid-cols-[180px_1fr] md:p-9'
-      }
-    >
-      <aside className="md:border-r md:border-fg-line md:pr-6">
-        <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-trust">
-          0{idx + 1} · {p.tag}
+    <div className="project-visual project-visual-web">
+      <div className="browser-frame browser-frame-main">
+        <div className="browser-bar">
+          <span /><span /><span />
+          <em>ncf-aroundx.com</em>
         </div>
-        <div className="mt-3 text-[13px] font-semibold text-fg">{p.period}</div>
-        <div className="mt-1 text-[12px] leading-snug text-fg-sub">{p.org}</div>
-        <div className="mt-1 text-[12px] leading-snug text-fg-sub">{p.role}</div>
+        <img src={admin?.src} alt={admin ? t(admin.label) : 'Next Challenge admin'} />
+      </div>
+      <div className="browser-frame browser-frame-mini browser-frame-automation">
+        <div className="browser-bar compact"><span /><span /><span /></div>
+        <img src={automation?.src} alt={automation ? t(automation.label) : 'Automation'} />
+      </div>
+      <div className="browser-frame browser-frame-mini browser-frame-figma">
+        <div className="browser-bar compact"><span /><span /><span /></div>
+        <img src={figma?.src} alt={figma ? t(figma.label) : 'Figma UI'} />
+      </div>
+      <div className="project-visual-caption">
+        <span className="project-live-dot" />
+        {t({ ko: '실제 관리자 · 자동화 · Figma 운영 화면', en: 'Real admin · automation · Figma operations screens' })}
+      </div>
+    </div>
+  );
+};
 
-        <div className="mt-5 hidden flex-wrap gap-1.5 md:flex">
-          {p.badges.slice(0, 4).map((badge) => (
-            <Pill key={badge}>{badge}</Pill>
-          ))}
+const ProjectDetails = ({ project }) => {
+  const { t } = useLanguage();
+  return (
+    <details className="project-details">
+      <summary>
+        <span>{t({ ko: '상세 과정 보기', en: 'View detailed process' })}</span>
+        <Icon name="arrow-right" size={15} stroke={1.8} />
+      </summary>
+      <div className="project-details-grid">
+        {project.sections.map((section, index) => (
+          <div key={index}>
+            <strong>{t(section.h)}</strong>
+            <ul>
+              {section.body.map((body, bodyIndex) => (
+                <li key={bodyIndex} dangerouslySetInnerHTML={{ __html: t(body) }} />
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </details>
+  );
+};
+
+const ProjectEditorial = ({ project, index }) => {
+  const { t } = useLanguage();
+  const points = getProjectCasePoints(project);
+  const isDateNavi = project.id === 'date-navi';
+
+  return (
+    <article className={`project-editorial reveal ${isDateNavi ? 'project-editorial-date' : 'project-editorial-web'}`}>
+      <div className="project-editorial-copy">
+        <div className="project-kicker">
+          <span>0{index + 1}</span>
+          <span>{project.tag}</span>
         </div>
-      </aside>
+        <h3>{t(project.title)}</h3>
+        <p className="project-headline">{t(project.headline)}</p>
 
-      <div>
-        <h3 className="text-[22px] font-bold leading-[1.3] tracking-[-0.015em] text-fg md:text-[26px]">
-          {t(p.title)}
-        </h3>
-        <p className="mt-3 text-[14px] italic leading-[1.6] text-trustdark md:text-[15px]">{t(p.headline)}</p>
-        <p className="mt-3 text-[14px] leading-[1.7] text-fg-sub md:text-[15px]">{t(p.summary)}</p>
-
-        <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3">
-          {p.metrics.map((m, i) => (
-            <div key={i} className="rounded-lg border border-fg-line bg-fg-soft px-4 py-3">
-              <div className="text-[18px] font-extrabold leading-tight tracking-tight text-trust md:text-[20px]">
-                {m.v}
-              </div>
-              <div className="mt-0.5 text-[11px] text-fg-sub">{t(m.l)}</div>
+        <div className="project-case-points">
+          {points.map((point) => (
+            <div key={point.label.en}>
+              <span>{t(point.label)}</span>
+              <p dangerouslySetInnerHTML={{ __html: t(point.body) }} />
             </div>
           ))}
         </div>
 
-        <div className="mt-6 grid gap-4">
-          {p.sections.map((s, i) => (
-            <div key={i} className="border-t border-fg-line pt-4">
-              <div className="text-[13px] font-bold text-fg">{t(s.h)}</div>
-              <ul className="mt-2 space-y-1.5">
-                {s.body.map((b, j) => (
-                  <li
-                    key={j}
-                    className="bul text-[13.5px] leading-[1.65] text-fg-sub"
-                    dangerouslySetInnerHTML={{ __html: t(b) }}
-                  />
-                ))}
-              </ul>
+        <div className="project-metrics">
+          {project.metrics.map((metric) => (
+            <div key={metric.v}>
+              <strong>{metric.v}</strong>
+              <span>{t(metric.l)}</span>
             </div>
           ))}
         </div>
 
-        {p.media && p.media.length > 0 && <BrowserShowcase media={p.media} />}
+        <div className="project-actions">
+          {isDateNavi ? (
+            <>
+              <a href={DATE_NAVI_LINKS.appStore} target="_blank" rel="noopener noreferrer">
+                App Store <Icon name="arrow-right" size={14} stroke={1.9} />
+              </a>
+              <a href={DATE_NAVI_LINKS.github} target="_blank" rel="noopener noreferrer" className="secondary">
+                GitHub <Icon name="arrow-right" size={14} stroke={1.9} />
+              </a>
+            </>
+          ) : (
+            project.url && (
+              <a href={project.url} target="_blank" rel="noopener noreferrer">
+                Live Website <Icon name="arrow-right" size={14} stroke={1.9} />
+              </a>
+            )
+          )}
+        </div>
 
-        <div className="mt-6 flex flex-wrap gap-1.5 md:hidden">
-          {p.badges.map((badge) => (
+        <div className="mt-6 flex flex-wrap gap-1.5">
+          {project.badges.slice(0, 5).map((badge) => (
             <Pill key={badge}>{badge}</Pill>
           ))}
         </div>
       </div>
+
+      <ProjectVisualCollage project={project} />
+      <ProjectDetails project={project} />
     </article>
   );
 };
@@ -78,13 +182,13 @@ const ProjectsSection = () => {
       <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-8 md:py-28">
         <Headline
           eyebrow={t(COPY.sections.projects.eyebrow)}
-          title={t(COPY.sections.projects.title)}
+          title={t({ ko: '아이디어를 넘어, 실제 서비스로.', en: 'Beyond ideas, into real products.' })}
           sub={t(COPY.sections.projects.sub)}
         />
 
-        <div className="grid gap-6 md:gap-8">
-          {PROJECTS.map((p, i) => (
-            <ProjectCard key={p.id} p={p} idx={i} />
+        <div className="space-y-14 md:space-y-20">
+          {PROJECTS.map((project, index) => (
+            <ProjectEditorial key={project.id} project={project} index={index} />
           ))}
         </div>
       </div>
@@ -92,4 +196,4 @@ const ProjectsSection = () => {
   );
 };
 
-window.ProjectsSection = ProjectsSection;
+Object.assign(window, { ProjectsSection, ProjectVisualCollage });
