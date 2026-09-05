@@ -57,7 +57,11 @@ try {
       throw new Error(`${viewport.name}: runtime errors: ${runtimeErrors.join(' | ')}`);
     }
 
-    const enButton = page.getByRole('button', { name: 'EN' }).first();
+    if (viewport.width < 768) {
+      await page.getByRole('button', { name: '메뉴 열기' }).click();
+    }
+
+    const enButton = page.getByRole('button', { name: 'EN' }).filter({ visible: true }).first();
     await enButton.click();
     await page.waitForFunction(() => document.documentElement.lang === 'en');
     const englishHero = await page.locator('#top h1').innerText();
@@ -65,9 +69,13 @@ try {
       throw new Error(`${viewport.name}: English toggle did not update hero: ${englishHero}`);
     }
 
-    const koButton = page.getByRole('button', { name: 'KO' }).first();
+    const koButton = page.getByRole('button', { name: 'KO' }).filter({ visible: true }).first();
     await koButton.click();
     await page.waitForFunction(() => document.documentElement.lang === 'ko');
+
+    if (viewport.width < 768) {
+      await page.getByRole('button', { name: '메뉴 닫기' }).click();
+    }
 
     await page.screenshot({
       path: `artifacts/portfolio-${viewport.name}.png`,
