@@ -1,78 +1,64 @@
-const EXPERIENCE_BACKGROUNDS = {
-  'paris-2024': 'assets/Paris 2024.jpeg',
-  'sports-events': 'assets/Sports Event.png',
-};
-
-const ExperienceCard = ({ e, idx }) => {
+const FeaturedExperience = ({ experience }) => {
   const { t } = useLanguage();
-  const background = EXPERIENCE_BACKGROUNDS[e.id];
 
   return (
-    <article className="reveal lift surface relative overflow-hidden rounded-2xl bg-fg-page p-6 md:p-7">
-      {background && (
-        <div className="absolute inset-0 z-0">
-          <img
-            src={background}
-            alt=""
-            aria-hidden="true"
-            className="h-full w-full opacity-[0.11]"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(180deg, color-mix(in srgb, var(--color-bg-white) 34%, transparent), color-mix(in srgb, var(--color-bg-white) 82%, transparent))',
-            }}
-          />
+    <article className="featured-experience reveal">
+      <img src="assets/Paris 2024.jpeg" alt="Paris 2024 Korea House" />
+      <div className="featured-experience-overlay" />
+      <div className="featured-experience-content">
+        <div className="featured-experience-topline">
+          <span>Featured Experience</span>
+          <span>{experience.period}</span>
         </div>
-      )}
 
-      <div
-        className="relative z-10"
-        style={{
-          textShadow:
-            '0 1px 0 color-mix(in srgb, var(--color-bg-white) 96%, transparent), 0 6px 18px color-mix(in srgb, var(--color-bg-white) 88%, transparent), 0 10px 28px color-mix(in srgb, var(--color-bg-white) 68%, transparent)',
-        }}
-      >
-        <div className="mb-3 flex items-start justify-between gap-3">
+        <div className="featured-experience-main">
           <div>
-            <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-trust">
-              0{idx + 1} · {e.tag}
-            </div>
-            <div className="mt-2 text-[18px] font-bold leading-tight tracking-[-0.01em] text-fg md:text-[19px]">
-              {t(e.org)}
-            </div>
-            <div className="mt-0.5 text-[13px] text-fg-sub">{e.role}</div>
+            <div className="featured-experience-org">PARIS 2024</div>
+            <h3>{t(experience.title)}</h3>
+            <p>{t(experience.org)} · {experience.role}</p>
           </div>
-          <div className="shrink-0 text-right">
-            <div className="whitespace-nowrap text-[12px] font-semibold text-fg">{e.period}</div>
+
+          <div className="featured-experience-metrics">
+            <div><strong>20+</strong><span>VIP / day</span></div>
+            <div><strong>Korea House</strong><span>VIP Lounge</span></div>
+            <div><strong>Global</strong><span>Operations</span></div>
           </div>
         </div>
 
-        <h4 className="mt-3 text-[15.5px] font-bold leading-[1.45] text-fg md:text-[16px]">{t(e.title)}</h4>
-
-        <ul className="mt-3 space-y-1.5">
-          {e.bullets.map((b, j) => (
-            <li
-              key={j}
-              className="bul text-[13.5px] leading-[1.65] text-fg-sub"
-              dangerouslySetInnerHTML={{ __html: t(b) }}
-            />
+        <div className="featured-experience-bullets">
+          {experience.bullets.slice(0, 3).map((bullet, index) => (
+            <p key={index} dangerouslySetInnerHTML={{ __html: t(bullet) }} />
           ))}
-        </ul>
+        </div>
+      </div>
+    </article>
+  );
+};
 
+const SupportingExperience = ({ experience, index }) => {
+  const { t } = useLanguage();
+  const period = experience.id === 'next-challenge' ? '2026.04 — 2026.06' : experience.period;
+
+  return (
+    <article className="supporting-experience reveal">
+      <div className="supporting-experience-index">0{index + 1}</div>
+      <div className="supporting-experience-body">
+        <div className="supporting-experience-meta">
+          <span>{experience.tag}</span>
+          <span>{period}</span>
+        </div>
+        <h4>{t(experience.org)}</h4>
+        <p className="supporting-experience-role">{experience.role}</p>
+        <h5>{t(experience.title)}</h5>
+        <p
+          className="supporting-experience-summary"
+          dangerouslySetInnerHTML={{ __html: t(experience.bullets[0]) }}
+        />
         <div className="mt-4 flex flex-wrap gap-1.5">
-          {e.badges.map((badge) => (
+          {experience.badges.slice(0, 3).map((badge) => (
             <Pill key={badge}>{badge}</Pill>
           ))}
         </div>
-
-        {e.note && (
-          <div className="mt-4 border-t border-dashed border-fg-line pt-3 text-[11.5px] italic text-fg-sub">
-            {t(e.note)}
-          </div>
-        )}
       </div>
     </article>
   );
@@ -80,27 +66,26 @@ const ExperienceCard = ({ e, idx }) => {
 
 const ExperienceSection = () => {
   const { t } = useLanguage();
-  const experienceTitle = t(COPY.sections.experience.title);
-  const [titleLead, titleRest] = experienceTitle.split(' — ');
+  const featured = EXPERIENCES.find((experience) => experience.id === 'paris-2024');
+  const supporting = EXPERIENCES.filter((experience) => experience.id !== 'paris-2024');
 
   return (
     <section id="experience" className="border-y border-fg-line bg-fg-soft">
-      <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-8 md:py-24">
+      <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-8 md:py-28">
         <Headline
           eyebrow={t(COPY.sections.experience.eyebrow)}
-          title={
-            <>
-              <span className="block">{titleLead} —</span>
-              <span className="block">{titleRest}</span>
-            </>
-          }
+          title={t({
+            ko: '글로벌 현장부터 사업 운영까지, 직접 움직였습니다.',
+            en: 'From global events to business operations, I worked on the ground.',
+          })}
           sub={t(COPY.sections.experience.sub)}
-          subClassName="md:max-w-none lg:whitespace-nowrap"
         />
 
-        <div className="grid gap-5 md:grid-cols-2 md:gap-6">
-          {EXPERIENCES.map((e, i) => (
-            <ExperienceCard key={e.id} e={e} idx={i} />
+        {featured && <FeaturedExperience experience={featured} />}
+
+        <div className="supporting-experience-list mt-8 md:mt-10">
+          {supporting.map((experience, index) => (
+            <SupportingExperience key={experience.id} experience={experience} index={index} />
           ))}
         </div>
       </div>
