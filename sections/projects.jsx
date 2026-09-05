@@ -36,50 +36,74 @@ const ProjectVisualCollage = ({ project }) => {
           <div className="device-island" />
           <img src={home?.src} alt={home ? t(home.label) : 'Date-navi home'} />
         </div>
-        <div className="device-phone device-phone-center">
+
+        <div className="device-phone device-phone-center device-phone-demo">
           <div className="device-island" />
+          <div className="device-demo-badge">
+            <span className="project-live-dot" />
+            {t({ ko: '앱 시연 영상', en: 'App demo' })}
+          </div>
           {video && (
-            <video autoPlay muted loop playsInline preload="metadata" aria-label={t(video.label)}>
+            <video autoPlay muted loop controls playsInline preload="metadata" aria-label={t(video.label)}>
               <source src={video.src} type="video/mp4" />
             </video>
           )}
         </div>
+
         <div className="device-phone device-phone-right">
           <div className="device-island" />
           <img src={result?.src} alt={result ? t(result.label) : 'Date-navi recommendation result'} />
         </div>
+
         <div className="project-visual-caption">
           <span className="project-live-dot" />
-          {t({ ko: '실제 App Store 출시 화면 · 실제 코스 생성 영상', en: 'Real App Store product screens · real course generation video' })}
+          {t({ ko: '실제 App Store 화면과 직접 촬영한 코스 생성 시연', en: 'Real App Store screens and an actual course-generation demo' })}
         </div>
       </div>
     );
   }
 
+  const liveHomepage = project.media.find((item) => item.type === 'iframe');
   const admin = project.media.find((item) => item.src?.includes('admin'));
   const automation = project.media.find((item) => item.src?.includes('automation'));
   const figma = project.media.find((item) => item.src?.includes('figma'));
 
   return (
     <div className="project-visual project-visual-web">
-      <div className="browser-frame browser-frame-main">
+      <div className="browser-frame browser-frame-main browser-frame-live">
         <div className="browser-bar">
           <span /><span /><span />
           <em>ncf-aroundx.com</em>
         </div>
-        <img src={admin?.src} alt={admin ? t(admin.label) : 'Next Challenge admin'} />
+        {liveHomepage ? (
+          <iframe
+            src={liveHomepage.src}
+            title={t(liveHomepage.label)}
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        ) : (
+          <img src={admin?.src} alt={admin ? t(admin.label) : 'Next Challenge admin'} />
+        )}
+        <div className="browser-live-label">
+          <span className="project-live-dot" />
+          {t({ ko: '실제 운영 중인 메인 페이지', en: 'Live operating homepage' })}
+        </div>
       </div>
+
       <div className="browser-frame browser-frame-mini browser-frame-automation">
         <div className="browser-bar compact"><span /><span /><span /></div>
         <img src={automation?.src} alt={automation ? t(automation.label) : 'Automation'} />
       </div>
+
       <div className="browser-frame browser-frame-mini browser-frame-figma">
         <div className="browser-bar compact"><span /><span /><span /></div>
         <img src={figma?.src} alt={figma ? t(figma.label) : 'Figma UI'} />
       </div>
+
       <div className="project-visual-caption">
         <span className="project-live-dot" />
-        {t({ ko: '실제 관리자 · 자동화 · Figma 운영 화면', en: 'Real admin · automation · Figma operations screens' })}
+        {t({ ko: '실제 홈페이지 임베딩 · 자동화 · Figma 운영 화면', en: 'Live homepage embed · automation · Figma operations screens' })}
       </div>
     </div>
   );
