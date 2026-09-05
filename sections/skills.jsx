@@ -6,6 +6,7 @@ const CAPABILITY_PILLARS = [
 ];
 
 const TOOL_ORDER = ['Figma','React Native · Expo','Supabase','SQL','GA4','Firebase','Git · GitHub','API Integration','LLM','Prompt Design'];
+const HIGHLIGHT_ICONS = ['sparkles', 'globe', 'medal'];
 
 const SkillsSection = () => {
   const { t } = useLanguage();
@@ -15,26 +16,61 @@ const SkillsSection = () => {
   return (
     <section id="skills" className="bg-fg-page skills-section">
       <div className="mx-auto max-w-[1200px] px-6 py-16 md:px-8 md:py-20">
-        <div className="section-micro-title">{t({ ko: '역량 · CAPABILITIES', en: 'CAPABILITIES' })}</div>
-
-        <div className="capability-row">
-          <div className="capability-pillars capability-compact">
-            {CAPABILITY_PILLARS.map((pillar) => (
-              <article key={pillar.title.en} className="capability-pillar reveal">
-                <div className="capability-icon"><Icon name={pillar.icon} size={16} stroke={1.9} /></div>
-                <h3>{t(pillar.title)}</h3>
-                <p>{t(pillar.body)}</p>
-              </article>
-            ))}
+        <div className="capabilities-intro reveal">
+          <div>
+            <div className="section-micro-title">{t({ ko: '역량 · CAPABILITIES', en: 'CAPABILITIES' })}</div>
+            <h2>{t({
+              ko: '문제를 발견하는 것에서\n해결하는 것까지,\n폭넓게 연결합니다.',
+              en: 'From finding problems\nto solving them,\nI connect the whole flow.',
+            })}</h2>
           </div>
+          <p>{t({
+            ko: '기획, 운영, 기술, 커뮤니케이션을 아우르는 역량으로 아이디어를 실제 서비스와 임팩트로 전환합니다.',
+            en: 'I connect planning, operations, technology, and communication to turn ideas into products and impact.',
+          })}</p>
+        </div>
 
-          <aside className="tools-compact reveal">
-            <div className="tools-compact-title">{t({ ko: '주요 도구 & 언어', en: 'Tools & languages' })}</div>
-            <div className="tools-compact-list">{tools.map((tool) => <span key={tool}>{tool}</span>)}</div>
-            <div className="language-compact-list">
-              {LANGUAGES.map((language) => <div key={language.lang.en}><strong>{t(language.lang)}</strong><span>{t(language.sub)}</span></div>)}
+        <div className="capability-pillars capability-compact">
+          {CAPABILITY_PILLARS.map((pillar) => (
+            <article key={pillar.title.en} className="capability-pillar reveal">
+              <div className="capability-icon"><Icon name={pillar.icon} size={18} stroke={1.9} /></div>
+              <h3>{t(pillar.title)}</h3>
+              <p>{t(pillar.body)}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="capability-detail-grid">
+          <article className="capability-detail-panel tools-panel reveal">
+            <div className="capability-panel-title"><Icon name="layers" size={17} stroke={1.9} />{t({ ko: 'Tools I use', en: 'Tools I use' })}</div>
+            <div className="tools-panel-list">
+              {tools.map((tool) => <span key={tool}>{tool}</span>)}
             </div>
-          </aside>
+          </article>
+
+          <article className="capability-detail-panel languages-panel reveal">
+            <div className="capability-panel-title"><Icon name="globe" size={17} stroke={1.9} />{t({ ko: 'Languages', en: 'Languages' })}</div>
+            <div className="languages-panel-list">
+              {LANGUAGES.map((language) => (
+                <div key={language.lang.en}>
+                  <strong>{t(language.lang)}</strong>
+                  <span>{t(language.sub)}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+
+          <article className="capability-detail-panel highlights-panel reveal">
+            <div className="capability-panel-title"><Icon name="sparkles" size={17} stroke={1.9} />{t({ ko: 'Key Highlights', en: 'Key Highlights' })}</div>
+            <div className="highlights-panel-list">
+              {COPY.sections.skills.highlights.map((highlight, index) => (
+                <div key={index}>
+                  <Icon name={HIGHLIGHT_ICONS[index] || 'sparkles'} size={15} stroke={1.9} />
+                  <p dangerouslySetInnerHTML={{ __html: t(highlight) }} />
+                </div>
+              ))}
+            </div>
+          </article>
         </div>
       </div>
     </section>
