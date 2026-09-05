@@ -13,7 +13,7 @@ const index = read('index.html');
 assert.match(hero, /hero-orbit/, 'Hero should include the orbit visual treatment');
 assert.match(hero, /proof-strip/, 'Hero should render one connected proof strip');
 assert.doesNotMatch(hero, /hobbies\.map/, 'Hero should no longer render the hobby expansion grid');
-assert.equal((hero.match(/hero-title-line/g) || []).length, 2, 'Hero headline should be rendered as exactly two intentional lines');
+assert.equal((hero.match(/<span[^>]*hero-title-line/g) || []).length, 2, 'Hero headline should be rendered as exactly two intentional lines');
 assert.match(hero, /hero-second-line/, 'The complete Korean second hero line should receive the blue emphasis treatment');
 assert.match(hero, /hero-portrait-final\.webp/, 'Hero should use the approved portrait asset');
 assert.match(hero, /hero-quote/, 'Hero should include the short signature quote from the approved mockup');
