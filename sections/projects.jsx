@@ -64,7 +64,13 @@ const ProjectVisualCollage = ({ project }) => {
             {t({ ko: '앱 시연 영상', en: 'App demo' })}
           </div>
           {video && (
-            <video autoPlay muted loop controls playsInline preload="metadata" aria-label={t(video.label)}>
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster="assets/date-navi/place-search.png"
+              aria-label={t(video.label)}
+            >
               <source src={video.src} type="video/mp4" />
             </video>
           )}
